@@ -1,0 +1,461 @@
+/* frontend/styles/premium-footer.css */
+
+.premium-footer {
+  /* LIGHT THEME VARIABLES */
+  --pf-bg-top: #F8FAFC;
+  --pf-bg-bottom: #e2e8f0;
+  --pf-text-primary: #0B3C5D;
+  --pf-text-secondary: #475569;
+  --pf-accent: #D4AF37;
+  --pf-card-bg: rgba(255, 255, 255, 0.9);
+  --pf-border: rgba(0, 0, 0, 0.08);
+  --pf-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  --pf-divider: rgba(11, 60, 93, 0.1);
+
+  position: relative;
+  background: var(--pf-bg-top);
+  color: var(--pf-text-primary);
+  padding: 5rem 0 2rem;
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+  transition: all 0.4s ease;
+  z-index: 10;
+}
+
+:root[data-theme='dark'] .premium-footer,
+.dark .premium-footer,
+.premium-footer.dark {
+  /* DARK THEME VARIABLES */
+  --pf-bg-top: #061A2B;
+  --pf-bg-bottom: #0B3C5D;
+  --pf-text-primary: #E2E8F0;
+  --pf-text-secondary: #94A3B8;
+  --pf-accent: #D4AF37;
+  --pf-card-bg: rgba(15, 23, 42, 0.4);
+  --pf-border: rgba(255, 255, 255, 0.08);
+  --pf-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+  --pf-divider: rgba(255, 255, 255, 0.1);
+
+  background: linear-gradient(180deg, var(--pf-bg-top) 0%, var(--pf-bg-bottom) 100%);
+}
+
+/* Animated gradient top line */
+.pf-top-line {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #0B3C5D, #D4AF37, #0B3C5D, #D4AF37);
+  background-size: 300% 100%;
+  animation: pfGradientScroll 6s linear infinite;
+}
+
+@keyframes pfGradientScroll {
+  0% { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
+
+/* Background blob */
+.pf-blob {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 60%);
+  pointer-events: none;
+  filter: blur(40px);
+}
+
+.pf-container {
+  width: min(1440px, calc(100% - 4rem));
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* Glassmorphism Wrapper for main content */
+.pf-glass-wrapper {
+  background: var(--pf-card-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--pf-border);
+  border-radius: 16px;
+  box-shadow: var(--pf-shadow);
+  padding: 3rem;
+  margin-bottom: 3rem;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1.2fr 1.2fr;
+  gap: 2.5rem;
+}
+
+@media (max-width: 1024px) {
+  .pf-glass-wrapper {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .pf-glass-wrapper {
+    grid-template-columns: 1fr;
+    padding: 2rem;
+  }
+}
+
+/* Typography */
+.pf-col-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--pf-text-primary);
+  margin-bottom: 1.5rem;
+  letter-spacing: 0.05em;
+}
+
+.pf-text {
+  color: var(--pf-text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* Column 1: Brand */
+.pf-brand-logo-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+  text-decoration: none;
+}
+
+.pf-brand-logo {
+  color: var(--pf-accent);
+  width: 2.5rem;
+  height: 2.5rem;
+  transition: transform 0.3s ease;
+}
+
+.pf-brand-logo-container:hover .pf-brand-logo {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.pf-brand-title {
+  font-family: 'Playfair Display', serif;
+  font-weight: 800;
+  font-size: 1.4rem;
+  color: var(--pf-text-primary);
+  line-height: 1.2;
+}
+
+.pf-socials {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.pf-social-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--pf-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--pf-text-primary);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.pf-social-icon::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(135deg, var(--pf-accent), #0B3C5D);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 0;
+}
+
+.pf-social-icon svg {
+  position: relative;
+  z-index: 1;
+  width: 1.25rem;
+  height: 1.25rem;
+  transition: color 0.3s ease;
+}
+
+.pf-social-icon:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+}
+
+.pf-social-icon:hover::before {
+  opacity: 1;
+}
+
+.pf-social-icon:hover svg {
+  color: white;
+}
+
+/* Column 2: Quick Links */
+.pf-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.pf-link {
+  display: flex;
+  align-items: center;
+  color: var(--pf-text-secondary);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.pf-link-arrow {
+  width: 0;
+  height: 1.25rem;
+  opacity: 0;
+  margin-right: 0px;
+  color: var(--pf-accent);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.pf-link:hover {
+  color: var(--pf-accent);
+  transform: translateX(5px);
+}
+
+.pf-link:hover .pf-link-arrow {
+  width: 1.25rem;
+  opacity: 1;
+  margin-right: 5px;
+}
+
+/* Column 3: Office Locations */
+.pf-office-head {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px dashed var(--pf-divider);
+}
+
+.pf-office-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--pf-accent);
+  flex-shrink: 0;
+}
+
+.pf-branches {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.pf-branch {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--pf-text-secondary);
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  padding: 0.4rem;
+  border-radius: 8px;
+  cursor: default;
+}
+
+.pf-branch-icon {
+  width: 1rem;
+  height: 1rem;
+  color: var(--pf-text-primary);
+  opacity: 0.5;
+  transition: all 0.3s ease;
+}
+
+.pf-branch:hover {
+  background: var(--pf-border);
+  color: var(--pf-accent);
+  transform: translateX(3px);
+}
+
+.pf-branch:hover .pf-branch-icon {
+  opacity: 1;
+  color: var(--pf-accent);
+}
+
+/* Column 4: Contact */
+.pf-contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  color: var(--pf-text-secondary);
+  text-decoration: none;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  transition: color 0.3s ease;
+}
+
+.pf-contact-item:hover {
+  color: var(--pf-text-primary);
+}
+
+.pf-contact-item svg {
+  color: var(--pf-accent);
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+.pf-contact-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.pf-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: 99px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  overflow: hidden;
+  position: relative;
+}
+
+.pf-btn::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 40%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+  transform: skewX(-20deg);
+  transition: all 0.5s ease;
+}
+
+.pf-btn:hover::after {
+  left: 150%;
+  transition: all 0.7s ease;
+}
+
+.pf-btn-primary {
+  background: linear-gradient(135deg, #0B3C5D, #1a5b8a);
+  color: white;
+  box-shadow: 0 4px 15px rgba(11, 60, 93, 0.2);
+}
+
+:root[data-theme='dark'] .pf-btn-primary,
+.dark .pf-btn-primary {
+  background: linear-gradient(135deg, var(--pf-accent), #e5c158);
+  color: #061A2B;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+}
+
+.pf-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(11, 60, 93, 0.4);
+}
+
+:root[data-theme='dark'] .pf-btn-primary:hover,
+.dark .pf-btn-primary:hover {
+  box-shadow: 0 8px 20px rgba(212, 175, 55, 0.5);
+}
+
+.pf-btn-secondary {
+  background: var(--pf-input-bg);
+  color: var(--pf-text-primary);
+  border: 1px solid var(--pf-border);
+}
+
+.pf-btn-secondary:hover {
+  background: var(--pf-card-bg);
+  transform: translateY(-2px);
+  border-color: var(--pf-accent);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+:root[data-theme='dark'] .pf-btn-secondary:hover,
+.dark .pf-btn-secondary:hover {
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
+}
+
+.pf-whatsapp {
+  color: #25D366;
+}
+
+/* Bottom Bar */
+.pf-bottom {
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--pf-divider);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  position: relative;
+}
+
+.pf-copyright, .pf-love {
+  font-size: 0.9rem;
+  color: var(--pf-text-secondary);
+  font-weight: 500;
+}
+
+.pf-heart {
+  color: #ef4444;
+  display: inline-block;
+  animation: pfHeartbeat 1.5s infinite;
+}
+
+@keyframes pfHeartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+/* Scroll to Top */
+.pf-scroll-top {
+  position: absolute;
+  right: 0;
+  top: -2.5rem;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: var(--pf-accent);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+  transition: all 0.3s ease;
+  z-index: 20;
+}
+
+.pf-scroll-top:hover {
+  transform: translateY(-3px) scale(1.1);
+  box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6);
+}
+
+@media (max-width: 640px) {
+  .pf-bottom {
+    flex-direction: column;
+    text-align: center;
+    padding-bottom: 4rem; /* Space for fixed whatsapp button */
+  }
+  .pf-scroll-top {
+    right: 50%;
+    transform: translateX(50%);
+    top: -4rem;
+  }
+}

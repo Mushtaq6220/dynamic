@@ -1,0 +1,161 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  color-scheme: light;
+  --bg: #eef8ff;
+  --bg-strong: #d7ecff;
+  --panel: rgba(255, 255, 255, 0.76);
+  --panel-strong: rgba(255, 255, 255, 0.92);
+  --line: rgba(88, 151, 208, 0.16);
+  --line-strong: rgba(88, 151, 208, 0.24);
+  --text: #173f67;
+  --muted: #5f7d9b;
+  --gold: #d8b160;
+  --gold-deep: #a67b22;
+  --green: #2a86cc;
+  --green-deep: #135e9f;
+  --shadow: 0 24px 80px rgba(49, 111, 172, 0.14);
+}
+
+.dark {
+  color-scheme: dark;
+  --bg: #061424;
+  --bg-strong: #0d233a;
+  --panel: rgba(8, 28, 46, 0.72);
+  --panel-strong: rgba(8, 25, 41, 0.94);
+  --line: rgba(130, 188, 236, 0.14);
+  --line-strong: rgba(130, 188, 236, 0.24);
+  --text: #e9f5ff;
+  --muted: #a8bed1;
+  --gold: #d5b268;
+  --gold-deep: #f0d492;
+  --green: #74c1ff;
+  --green-deep: #d6efff;
+  --shadow: 0 24px 90px rgba(0, 0, 0, 0.36);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background:
+    radial-gradient(circle at 12% 10%, rgba(162, 217, 255, 0.46), transparent 18%),
+    radial-gradient(circle at 88% 18%, rgba(123, 188, 255, 0.26), transparent 20%),
+    radial-gradient(circle at 72% 82%, rgba(171, 233, 255, 0.24), transparent 18%),
+    linear-gradient(180deg, var(--bg) 0%, color-mix(in srgb, var(--bg), #ffffff 10%) 100%);
+  color: var(--text);
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+.glass-panel {
+  background: linear-gradient(180deg, var(--panel), color-mix(in srgb, var(--panel), transparent 16%));
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(18px);
+}
+
+.glass-panel-strong {
+  background: linear-gradient(180deg, var(--panel-strong), color-mix(in srgb, var(--panel-strong), transparent 12%));
+  border: 1px solid var(--line-strong);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(20px);
+}
+
+.section-shell {
+  width: min(1200px, calc(100% - 1.5rem));
+  margin-inline: auto;
+}
+
+.gold-glow {
+  box-shadow:
+    0 14px 35px rgba(166, 123, 34, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.24);
+}
+
+.hero-image-overlay {
+  background:
+    linear-gradient(180deg, rgba(8, 34, 60, 0.18) 0%, rgba(6, 26, 51, 0.72) 100%),
+    radial-gradient(circle at center, rgba(146, 211, 255, 0.16), transparent 30%);
+}
+
+.grid-pattern {
+  background-image:
+    linear-gradient(rgba(126, 188, 235, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(126, 188, 235, 0.08) 1px, transparent 1px);
+  background-size: 36px 36px;
+}
+
+.flight-path {
+  stroke-dasharray: 10 12;
+  animation: dashMove 16s linear infinite;
+}
+
+.flight-spinner-trail {
+  animation: trailPulse 1.8s ease-in-out infinite;
+}
+
+.shimmer-line {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-line::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.28), transparent);
+  animation: shimmerSweep 2.2s ease-in-out infinite;
+}
+
+.sky-glow {
+  background:
+    radial-gradient(circle at center, rgba(255, 255, 255, 0.8), rgba(160, 220, 255, 0.18) 55%, transparent 72%);
+}
+
+@keyframes dashMove {
+  from {
+    stroke-dashoffset: 220;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes trailPulse {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(0.95);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.06);
+  }
+}
+
+@keyframes shimmerSweep {
+  100% {
+    transform: translateX(100%);
+  }
+}

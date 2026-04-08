@@ -1,0 +1,59 @@
+{
+  "packages": [
+    {
+      "name": "Dubai Escape",
+      "price": 45999,
+      "days": 5,
+      "route": "Delhi - Dubai - Delhi",
+      "hotel": "4 Star",
+      "included": ["Hotel", "Breakfast", "Airport Transfer", "City Tour"],
+      "plan": "Family"
+    },
+    {
+      "name": "Bali Honeymoon",
+      "price": 68999,
+      "days": 6,
+      "route": "Mumbai - Bali - Mumbai",
+      "hotel": "Resort",
+      "included": ["Hotel", "Breakfast", "Visa Support", "Private Transfer"],
+      "plan": "Couple"
+    }
+  ],
+  "flights": [
+    {
+      "flightNo": "AI202",
+      "origin": "Delhi",
+      "destination": "Dubai",
+      "status": "On Time",
+      "scheduleTime": "10:30"
+    },
+    {
+      "flightNo": "6E711",
+      "origin": "Mumbai",
+      "destination": "Singapore",
+      "status": "Delayed",
+      "scheduleTime": "18:45"
+    }
+  ],
+  "inquiries": [
+    {
+      "name": "Rahul Sharma",
+      "email": "rahul@example.com",
+      "phone": "9876543210",
+      "destination": "Dubai",
+      "travelers": 2,
+      "message": "Need package details for May travel.",
+      "status": "new"
+    }
+  ],
+  "visaApplications": [
+    {
+      "fullName": "Rahul Sharma",
+      "passportNo": "N1234567",
+      "country": "UAE",
+      "visaType": "Tourist",
+      "status": "processing",
+      "notes": "Documents verified"
+    }
+  ]
+}
