@@ -19,11 +19,12 @@ export const umrahPackages = [
     hotel: "Comfort stay near the pilgrimage route",
     route: "Hyderabad - Jeddah - Makkah - Madinah - Hyderabad",
     description:
-      "A thoughtfully curated Umrah experience that prioritizes both spiritual devotion and exceptional value. We provide seamless travel logistics and hand-picked accommodations, ensuring your sacred journey is respectful, peaceful, and perfectly organized for your peace of mind.",
+      "Makkah Essentials is a practical Umrah package designed for pilgrims who want a respectful and well-managed journey without stretching the budget. It focuses on reliable travel coordination, comfortable hotel arrangements, and core support throughout the pilgrimage flow.",
     longDescription: [
-      "Embark on a soul-stirring journey to the heart of Islam with our Budget Saver package—where your focus remains on worship, while we handle the rest. We believe that every believer deserves a dignified and comfortable pilgrimage, regardless of budget.",
-      "This package is designed for those who value simplicity and sincerity. We've eliminated the stress of planning by coordinating every essential detail, from your flights and visa to comfortable hotel stays within reach of the Holy Haram.",
-      "Experience the beauty of Makkah and Madinah with our dedicated support team guiding your every step. It’s more than just a trip; it’s a lifetime memory crafted with clarity, trust, and genuine care for the pilgrim experience.",
+      "Undertaking the beautiful, soul-stirring journey of Umrah is a dream shared by Muslims across the world, and every year millions of believers travel to the Kingdom of Saudi Arabia to fulfil this cherished aspiration. We believe that every pilgrim who sets out for the House of Allah SWT deserves a truly meaningful experience, because for many, this is not a journey they may be able to undertake again and again.",
+      "Every pilgrim's journey is deeply personal and deserves a thoughtful, individual touch. Some travellers prefer a quiet and private experience with their family, while others feel more comfortable travelling in groups with friends, relatives, or members of their community. This is where carefully planned and highly personalised Umrah packages become especially valuable.",
+      "Makkah Essentials is created for pilgrims who want that sense of care without moving into a heavy premium budget. It combines practical planning, respectful guidance, and dependable arrangements so that your focus can remain on worship, reflection, and peace of mind throughout the journey.",
+      "From the moment of departure to hotel coordination, visa support, and city transfers, this package is designed to reduce uncertainty and make the overall experience feel calm, manageable, and spiritually rewarding. It is a simple package in category, but it is built with sincerity, clarity, and genuine care for the pilgrim experience.",
     ],
     details: [
       "Ideal for first-time pilgrims looking for a simple and dependable package",
@@ -224,7 +225,7 @@ export const hajjPackages = [
     duration: "20 Days",
     features: ["Standard Hotel", "Group Transport", "Guided Ziyarat", "Included Meals"],
     badge: "Popular",
-    image: "https://voyeglobal.com/wp-content/webp-express/webp-images/uploads/2025/05/ChatGPT-Image-May-26-2025-09_52_13-AM.jpg.webp",
+    image: "https://media.gettyimages.com/id/2156999114/photo/mecca-saudi-arabia-prospective-pilgrims-pray-at-the-jabal-ar-rahmah-in-arafat-as-muslims.jpg?s=612x612&w=0&k=20&c=3vWbMghRM4ccfbWbn1t9fUFmyzjb24jKs6jF2AAK6-k=",
     description: "Extended budget-friendly package allowing more serene days in Madinah and Makkah pre/post Hajj.",
     hotel: "Shared Accommodations in Aziziyah",
     route: "Hyderabad - Jeddah - Madinah - Makkah - Hyderabad"
@@ -235,7 +236,7 @@ export const hajjPackages = [
     name: "Comfort Hajj 10 Days",
     price: "Rs. 6,80,000",
     duration: "10 Days",
-    features: ["3-Star Nearby Hotel", "Private Transport", "Guided Ziyarat", "Full Board Meals"],
+    features: ["4-Star Nearby Hotel", "Private Transport", "Guided Ziyarat", "Full Board Meals"],
     badge: "Short & Sweet",
     image: "https://d3i6fh83elv35t.cloudfront.net/static/2024/06/2024-06-15T090737Z_953939996_RC2GB8ALFUNF_RTRMADP_3_SAUDI-HAJ-1024x678.jpg",
     description: "A fast-paced yet comfortable Hajj journey perfectly tailored for busy professionals needing higher quality service.",

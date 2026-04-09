@@ -229,15 +229,15 @@ export default function AboutPage() {
         </div>
 
         <div className="relative">
-          {/* Vertical Timeline Connector (Mobile) */}
-          <div className="lg:hidden absolute top-[10%] bottom-[10%] left-[50%] w-[2px] bg-gradient-to-b from-transparent via-[var(--primary)]/30 dark:via-[#D4AF37]/30 to-transparent -translate-x-1/2 z-0"></div>
+          {/* Vertical Timeline Connector (Mobile - Hidden on Desktop) */}
+          <div className="lg:hidden absolute top-0 bottom-0 left-[31px] w-[2px] bg-gradient-to-b from-[var(--primary)]/40 via-[var(--primary)]/10 to-transparent dark:from-[#D4AF37]/40 dark:via-[#D4AF37]/10 z-0"></div>
           
-          {/* Timeline Connector (Desktop) */}
+          {/* Horizontal Timeline Connector (Desktop - Hidden on Mobile) */}
           <div className="hidden lg:block absolute top-[56px] left-[10%] right-[10%] h-[2px] bg-[linear-gradient(90deg,transparent,rgba(11,60,93,0.3)_50%,transparent)] dark:bg-[linear-gradient(90deg,transparent,rgba(212,175,55,0.3)_50%,transparent)] z-0 pointer-events-none"></div>
           
           <motion.div 
             initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-6 relative z-10"
+            className="flex flex-col lg:flex-row lg:justify-between gap-10 lg:gap-4 relative z-10"
           >
             {[
               { num: "1", title: "Consultation", sub: "Understanding needs" },
@@ -246,15 +246,24 @@ export default function AboutPage() {
               { num: "4", title: "Preparation", sub: "Booking & briefing" },
               { num: "5", title: "Support", sub: "Ongoing trip care" },
             ].map((step, idx) => (
-              <motion.div key={idx} variants={fadeUp} className="flex flex-col items-center text-center group relative p-6 rounded-[32px] hover:bg-[var(--surface-strong)] dark:hover:bg-[#111827]/50 transition-all duration-500 overflow-hidden cursor-pointer">
-                {/* Advanced Mobile Glow Core */}
-                <div className="absolute inset-0 bg-gradient-to-b from-[var(--primary)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+              <motion.div key={idx} variants={fadeUp} className="flex flex-row lg:flex-col items-start lg:items-center text-left lg:text-center group relative gap-6 lg:gap-0 lg:p-6 lg:rounded-[32px] lg:hover:bg-[var(--surface-strong)] lg:dark:hover:bg-[#111827]/50 transition-all duration-500 overflow-hidden cursor-pointer flex-1">
+                {/* Desktop Hover Glow Core */}
+                <div className="hidden lg:block absolute inset-0 bg-gradient-to-b from-[var(--primary)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
                 
-                <div className="w-16 h-16 rounded-full border border-[var(--border)] dark:border-[#D4AF37]/30 bg-[var(--surface)] text-[var(--heading)] flex items-center justify-center font-extrabold text-lg shadow-sm mb-5 group-hover:scale-110 group-hover:-translate-y-2 group-hover:bg-[var(--primary)] dark:group-hover:bg-[#D4AF37] group-hover:text-white dark:group-hover:text-[#0A0F1C] group-hover:shadow-[0_10px_30px_rgba(11,60,93,0.3)] dark:group-hover:shadow-[0_10px_30px_rgba(212,175,55,0.4)] transition-all duration-500 relative z-10 duration-700">
+                {/* Circle Number */}
+                <div className="flex-shrink-0 w-[64px] h-[64px] rounded-full border-2 border-[var(--border)] dark:border-[#D4AF37]/30 bg-[var(--bg)] text-[var(--heading)] flex items-center justify-center font-extrabold text-xl shadow-md lg:mb-5 group-hover:scale-110 lg:group-hover:-translate-y-2 group-hover:bg-[var(--primary)] dark:group-hover:bg-[#D4AF37] group-hover:text-white dark:group-hover:text-[#0A0F1C] group-hover:shadow-[0_10px_30px_rgba(11,60,93,0.3)] dark:group-hover:shadow-[0_10px_30px_rgba(212,175,55,0.4)] transition-all duration-500 relative z-10">
                   {step.num}
                 </div>
-                <h4 className="font-bold text-xl text-[var(--heading)] mb-2 relative z-10 group-hover:text-[var(--primary)] dark:group-hover:text-[#D4AF37] transition-colors duration-300">{step.title}</h4>
-                <p className="text-sm text-[var(--text-muted)] relative z-10 font-medium">{step.sub}</p>
+
+                {/* Text Content */}
+                <div className="flex flex-col pt-2 lg:pt-0">
+                  <h4 className="font-bold text-xl text-[var(--heading)] mb-1.5 relative z-10 group-hover:text-[var(--primary)] dark:group-hover:text-[#D4AF37] transition-colors duration-300 tracking-tight">
+                    {step.title}
+                  </h4>
+                  <p className="text-sm text-[var(--text-muted)] relative z-10 font-medium leading-tight">
+                    {step.sub}
+                  </p>
+                </div>
               </motion.div>
             ))}
           </motion.div>

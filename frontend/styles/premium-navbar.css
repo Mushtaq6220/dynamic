@@ -40,6 +40,10 @@
     --dropdown-item-hover: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.02));
 }
 
+[data-theme="dark"] .nav-glow {
+    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.7) 0%, transparent 70%);
+}
+
 /* Base Styles */
 .premium-header {
     position: fixed;
@@ -735,7 +739,7 @@
 }
 
 [data-theme="dark"] .nav-glow {
-    background: radial-gradient(ellipse at center, rgba(11, 60, 93, 0.8) 0%, transparent 70%);
+    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.7) 0%, transparent 70%);
 }
 
 [data-theme="dark"] .mobile-nav-toggle,
