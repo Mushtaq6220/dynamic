@@ -19,12 +19,11 @@ export const umrahPackages = [
     hotel: "Comfort stay near the pilgrimage route",
     route: "Hyderabad - Jeddah - Makkah - Madinah - Hyderabad",
     description:
-      "Makkah Essentials is a practical Umrah package designed for pilgrims who want a respectful and well-managed journey without stretching the budget. It focuses on reliable travel coordination, comfortable hotel arrangements, and core support throughout the pilgrimage flow.",
+      "A thoughtfully curated Umrah experience that prioritizes both spiritual devotion and exceptional value. We provide seamless travel logistics and hand-picked accommodations, ensuring your sacred journey is respectful, peaceful, and perfectly organized for your peace of mind.",
     longDescription: [
-      "Undertaking the beautiful, soul-stirring journey of Umrah is a dream shared by Muslims across the world, and every year millions of believers travel to the Kingdom of Saudi Arabia to fulfil this cherished aspiration. We believe that every pilgrim who sets out for the House of Allah SWT deserves a truly meaningful experience, because for many, this is not a journey they may be able to undertake again and again.",
-      "Every pilgrim's journey is deeply personal and deserves a thoughtful, individual touch. Some travellers prefer a quiet and private experience with their family, while others feel more comfortable travelling in groups with friends, relatives, or members of their community. This is where carefully planned and highly personalised Umrah packages become especially valuable.",
-      "Makkah Essentials is created for pilgrims who want that sense of care without moving into a heavy premium budget. It combines practical planning, respectful guidance, and dependable arrangements so that your focus can remain on worship, reflection, and peace of mind throughout the journey.",
-      "From the moment of departure to hotel coordination, visa support, and city transfers, this package is designed to reduce uncertainty and make the overall experience feel calm, manageable, and spiritually rewarding. It is a simple package in category, but it is built with sincerity, clarity, and genuine care for the pilgrim experience.",
+      "Embark on a soul-stirring journey to the heart of Islam with our Budget Saver package—where your focus remains on worship, while we handle the rest. We believe that every believer deserves a dignified and comfortable pilgrimage, regardless of budget.",
+      "This package is designed for those who value simplicity and sincerity. We've eliminated the stress of planning by coordinating every essential detail, from your flights and visa to comfortable hotel stays within reach of the Holy Haram.",
+      "Experience the beauty of Makkah and Madinah with our dedicated support team guiding your every step. It’s more than just a trip; it’s a lifetime memory crafted with clarity, trust, and genuine care for the pilgrim experience.",
     ],
     details: [
       "Ideal for first-time pilgrims looking for a simple and dependable package",

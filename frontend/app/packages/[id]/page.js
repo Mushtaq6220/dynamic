@@ -127,28 +127,51 @@ export default function PackageDetailPage({ params }) {
             </div>
 
             {/* Map Route Visualization */}
-            <div className={`pp-detail-glass theme-${item.category} p-6 rounded-[24px]`}>
-              <h3 className="text-lg font-bold text-[var(--pp-text-main-light)] mb-4 flex items-center gap-2">
-                <MapPinIcon className="w-5 h-5 text-[var(--pp-gold)]" />
-                Journey Route
+            <div className={`pp-detail-glass theme-${item.category} p-6 rounded-[24px] border-2 border-[var(--pp-gold)]/20 shadow-xl overflow-hidden`}>
+              <h3 className="text-lg font-bold text-[var(--pp-text-main-light)] mb-8 flex items-center gap-2">
+                <div className="p-2 bg-[var(--pp-gold)]/10 rounded-lg">
+                  <MapPinIcon className="w-5 h-5 text-[var(--pp-gold)]" />
+                </div>
+                Journey Timeline
               </h3>
-              <div className="relative w-full rounded-[16px] overflow-hidden border border-gray-100 bg-gray-50/50 aspect-[21/9] flex items-center justify-center">
-                <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
-                <div className="relative z-10 w-full px-12">
-                   <div className="flex items-center justify-between w-full h-1 bg-gray-200 rounded-full relative">
-                      <motion.div 
-                        initial={{ width: 0 }} 
-                        whileInView={{ width: "100%" }} 
-                        transition={{ duration: 2, ease: "easeInOut" }}
-                        className="absolute left-0 top-0 h-full bg-[var(--pp-gold)] rounded-full"
-                      />
-                      {item.route.split("-").map((city, idx) => (
-                        <div key={idx} className="relative z-20 flex flex-col items-center">
-                          <div className="w-3.5 h-3.5 rounded-full bg-white border-2 border-[var(--pp-gold)] shadow-sm z-10"></div>
-                          <span className="absolute top-6 text-[9px] font-bold uppercase tracking-wider text-[var(--pp-text-muted-light)] whitespace-nowrap">{city.trim()}</span>
+              
+              <div className="relative w-full py-12 px-6 sm:px-12 bg-gray-50/30 rounded-2xl border border-gray-100/50">
+                {/* Background Line */}
+                <div className="absolute left-6 right-6 sm:left-12 sm:right-12 top-1/2 -translate-y-1/2 h-1 bg-gray-200 rounded-full overflow-hidden">
+                   <motion.div 
+                     initial={{ width: 0 }} 
+                     whileInView={{ width: "100%" }} 
+                     transition={{ duration: 2.5, ease: "easeInOut" }}
+                     className="h-full bg-gradient-to-r from-[#0B3C5D] via-[var(--pp-gold)] to-[#0B3C5D]"
+                   />
+                </div>
+
+                {/* Milestones */}
+                <div className="relative flex items-center justify-between h-full">
+                  {item.route.split("-").map((city, idx) => {
+                    const cityName = city.trim();
+                    const isEven = idx % 2 === 0;
+                    
+                    return (
+                      <div key={idx} className="relative flex flex-col items-center">
+                        {/* Dot */}
+                        <div className="relative group">
+                          <div className="w-5 h-5 rounded-full bg-white border-2 border-[var(--pp-gold)] shadow-[0_0_10px_rgba(184,145,45,0.3)] z-10 transition-transform duration-300 group-hover:scale-125"></div>
+                          <div className="absolute inset-0 bg-[var(--pp-gold)] rounded-full blur-[4px] opacity-0 group-hover:opacity-60 transition-opacity"></div>
                         </div>
-                      ))}
-                   </div>
+
+                        {/* Label - Staggered Top/Bottom */}
+                        <span className={`absolute whitespace-nowrap text-[8px] sm:text-[10px] font-black uppercase tracking-widest text-[#0B3C5D] 
+                          ${isEven ? "-bottom-10" : "-top-10"}
+                        `}>
+                          {cityName}
+                        </span>
+
+                        {/* Connector line for labels */}
+                        <div className={`absolute w-px h-6 bg-gradient-to-b ${isEven ? "from-[var(--pp-gold)] to-transparent top-5" : "from-transparent to-[var(--pp-gold)] -top-6"} opacity-40`}></div>
+                      </div>
+                    );
+                  })}
                 </div>
               </div>
             </div>

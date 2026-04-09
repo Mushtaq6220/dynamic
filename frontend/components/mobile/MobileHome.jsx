@@ -196,7 +196,7 @@ export default function PilgrimageHome({ packages = [], flights = [] }) {
       </section>
 
       {/* Introduction / About Section */}
-      <section className="relative z-10 mx-auto max-w-7xl bg-transparent px-6 py-20 md:px-8 md:py-24">
+      <section className="relative z-10 mx-auto max-w-7xl bg-transparent px-6 pt-20 pb-10 md:px-8 md:pt-24 md:pb-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left Text Content */}
           <motion.div
@@ -241,7 +241,7 @@ export default function PilgrimageHome({ packages = [], flights = [] }) {
             <img
               src="/global-travel-connections.png"
               alt="Global Journey Flight"
-              className="w-full h-full object-contain scale-[0.95] transition-transform duration-[10s] group-hover:scale-105"
+              className="w-full h-full object-cover scale-100 transition-transform duration-[10s] group-hover:scale-110"
             />
             {/* Glowing Abstract Corner */}
             <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-[#D4AF37] rounded-full blur-[80px] opacity-40 z-20"></div>
@@ -252,7 +252,7 @@ export default function PilgrimageHome({ packages = [], flights = [] }) {
 
 
       {/* Global Reach & Connectivity Section - REDESIGNED */}
-      <section className="py-24 px-6 max-w-7xl mx-auto bg-transparent relative z-10">
+      <section className="pt-6 pb-24 px-6 max-w-7xl mx-auto bg-transparent relative z-10">
         <div className="relative rounded-[40px] overflow-hidden p-8 md:p-12 lg:p-16">
           {/* Advanced Animated Background */}
           <div className="absolute inset-0 bg-[var(--surface)] z-0 mix-blend-normal opacity-95"></div>
