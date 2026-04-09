@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { packageCategories, hajjPackages } from "../data/packageCatalog";
 import { 
-  CheckCircleIcon, StarIcon, DocumentCheckIcon 
+  CheckCircleIcon, StarIcon, DocumentCheckIcon, ShieldCheckIcon, BuildingOfficeIcon, UserGroupIcon 
 } from "@heroicons/react/24/outline";
 import SectionReveal from "./SectionReveal";
 import "../styles/premium-packages.css";
