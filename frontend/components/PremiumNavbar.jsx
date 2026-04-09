@@ -139,6 +139,11 @@ export default function PremiumNavbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [theme, setTheme] = useState("light");
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const [expandedMobileItems, setExpandedMobileItems] = useState([]);
+
+  const toggleMobileItem = (idx) => {
+    setExpandedMobileItems(prev => prev.includes(idx) ? prev.filter(i => i !== idx) : [...prev, idx]);
+  };
 
   // Handle Scroll effect
   useEffect(() => {
@@ -265,37 +270,86 @@ export default function PremiumNavbar() {
       {/* Mobile Menu Overlay */}
       <AnimatePresence>
         {mobileMenuOpen && (
-          <motion.div 
-            className={`mobile-menu-overlay ${mobileMenuOpen ? "open" : ""}`}
-            initial={{ opacity: 0, y: "-100%" }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: "-100%" }}
-            transition={{ duration: 0.5, ease: [0.77, 0, 0.175, 1] }}
-          >
+          <>
+            <motion.div 
+              className="mobile-menu-backdrop open"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setMobileMenuOpen(false)}
+            />
+            <motion.div 
+              className="mobile-menu-overlay open"
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+            >
             {menuData.map((item, idx) => (
               <motion.div
                 key={idx}
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: idx * 0.1 }}
+                className="w-full"
               >
-                <Link 
-                  href={item.href} 
-                  className="mobile-nav-link"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {item.label}
-                </Link>
+                {item.dropdown ? (
+                  <div className="w-full">
+                    <button 
+                      onClick={() => toggleMobileItem(idx)}
+                      className="mobile-nav-link flex flex-row items-center justify-between"
+                    >
+                      {item.label}
+                      <ChevronDownIcon className={`w-5 h-5 transition-transform ${expandedMobileItems.includes(idx) ? 'rotate-180' : ''}`} />
+                    </button>
+                    <AnimatePresence>
+                      {expandedMobileItems.includes(idx) && (
+                        <motion.div 
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          className="overflow-hidden pt-3 pb-1 flex flex-col gap-3 px-2"
+                        >
+                          {item.dropdown.map((subItem, sIdx) => (
+                             <Link 
+                               key={sIdx}
+                               href={subItem.href}
+                               className="flex items-center gap-4 p-3 rounded-2xl bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700 hover:bg-gray-100 transition-colors"
+                               onClick={() => setMobileMenuOpen(false)}
+                             >
+                                <div className="text-sky-600 dark:text-yellow-500 w-6 h-6 flex-shrink-0">
+                                   {subItem.icon}
+                                </div>
+                                <div className="flex flex-col text-left">
+                                   <span className="text-sm font-bold text-gray-900 dark:text-white">{subItem.title}</span>
+                                   <span className="text-[10px] text-gray-500 line-clamp-1">{subItem.desc}</span>
+                                </div>
+                             </Link>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                ) : (
+                  <Link 
+                    href={item.href} 
+                    className="mobile-nav-link text-center"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                )}
               </motion.div>
             ))}
             <Link 
               href="/contact" 
-              className="cta-btn mt-4"
+              className="cta-btn mt-6 mx-auto w-full max-w-sm flex justify-center py-4"
               onClick={() => setMobileMenuOpen(false)}
             >
               Get Started
             </Link>
           </motion.div>
+          </>
         )}
       </AnimatePresence>
     </header>

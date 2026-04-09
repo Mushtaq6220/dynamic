@@ -24,6 +24,7 @@ export default function FloatingSupportWidget() {
 
   return (
     <div className="fsw-wrapper">
+      {isOpen && <div className="fsw-backdrop sm:hidden" onClick={() => setIsOpen(false)}></div>}
       {/* Expandable Menu */}
       <div className={`fsw-menu ${isOpen ? "active" : ""}`}>
         <div className="fsw-header">

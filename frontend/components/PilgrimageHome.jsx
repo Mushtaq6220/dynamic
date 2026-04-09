@@ -55,7 +55,7 @@ export default function PilgrimageHome({ packages = [], flights = [] }) {
   return (
     <main className="relative bg-transparent">
       {/* Cinematic Hero Section */}
-      <section className="relative w-full h-[60vh] md:h-[70vh] lg:h-[85vh] min-h-[500px] overflow-hidden">
+      <section className="relative w-full h-[50vh] min-h-[350px] md:h-[70vh] md:min-h-[500px] lg:h-[85vh] overflow-hidden">
         {/* Swiper Background Slider */}
         <div className="absolute inset-0 w-full h-full z-0">
           <Swiper
@@ -129,7 +129,7 @@ export default function PilgrimageHome({ packages = [], flights = [] }) {
               <SwiperSlide key={i}>
                 <div className="relative w-full h-full overflow-hidden">
                   <div className={`absolute inset-0 z-10 pointer-events-none ${banner.showText ? 'bg-black/50' : 'bg-black/10'}`}></div>
-                  <img src={banner.src} alt={`Banner ${i}`} className="w-full h-full object-cover object-[center_top] md:object-center" />
+                  <img src={banner.src} alt={`Banner ${i}`} className="w-full h-full object-contain md:object-cover sm:object-[center_top] md:object-center bg-black" />
 
                   {(banner.showText || banner.showButtonOnly) && (
                     <div className={`absolute inset-0 z-20 h-full max-w-7xl mx-auto px-6 flex flex-col items-center pointer-events-none ${banner.showText ? 'justify-center text-center py-20' : 'justify-between text-center pt-16 md:pt-20 pb-24 md:pb-32'}`}>
@@ -255,7 +255,7 @@ export default function PilgrimageHome({ packages = [], flights = [] }) {
           <div className="absolute inset-0 bg-[var(--surface)] z-0 mix-blend-normal opacity-95"></div>
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-[var(--primary)]/10 via-[var(--surface)]/5 to-transparent z-0"></div>
           <div className="absolute inset-0 bg-[linear-gradient(to_right,var(--border)_1px,transparent_1px),linear-gradient(to_bottom,var(--border)_1px,transparent_1px)] bg-[size:24px_24px] z-0 opacity-40"></div>
-          <div className="absolute top-0 right-0 w-full h-[500px] bg-gradient-to-b from-[var(--primary)]/20 to-transparent blur-3xl z-0 pointer-events-none"></div>
+          <div className="absolute top-0 right-0 w-full md:w-[500px] h-[300px] md:h-[500px] bg-gradient-to-b from-[var(--primary)]/20 to-transparent blur-3xl z-0 pointer-events-none"></div>
 
           <div className="relative z-20">
             <div className="text-center mb-16">
@@ -348,8 +348,8 @@ export default function PilgrimageHome({ packages = [], flights = [] }) {
         <div className="absolute inset-0 opacity-[0.03] bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] z-0 mix-blend-overlay"></div>
 
         {/* Animated Glow Elements */}
-        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#D4AF37] rounded-full blur-[150px] opacity-20 -translate-y-1/2 translate-x-1/3"></div>
-        <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#D4AF37] rounded-full blur-[150px] opacity-20 translate-y-1/2 -translate-x-1/3"></div>
+        <div className="absolute top-0 right-0 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-[#D4AF37] rounded-full blur-[100px] md:blur-[150px] opacity-20 -translate-y-1/2 translate-x-1/3"></div>
+        <div className="absolute bottom-0 left-0 w-[300px] h-[300px] md:w-[500px] md:h-[500px] bg-[#D4AF37] rounded-full blur-[100px] md:blur-[150px] opacity-20 translate-y-1/2 -translate-x-1/3"></div>
 
         <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
           <motion.div

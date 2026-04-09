@@ -189,6 +189,12 @@
   transform: translateY(30px) scale(0.95);
   transform-origin: bottom right;
   transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 102;
+}
+
+/* Backdrop for bottom sheet on mobile */
+.fsw-backdrop {
+  display: none;
 }
 
 .fsw-menu.active {
@@ -353,7 +359,42 @@
 
 @media (max-width: 640px) {
   .fsw-wrapper {
-    bottom: 1.5rem;
+    bottom: max(1.5rem, env(safe-area-inset-bottom));
     right: 1.5rem;
   }
+
+  .fsw-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    z-index: 101;
+    animation: fadeIn 0.3s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  /* Make menu a bottom sheet */
+  .fsw-menu {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100vw;
+    border-radius: 28px 28px 0 0;
+    padding: 2rem 1.5rem max(2.5rem, env(safe-area-inset-bottom));
+    transform: translateY(100%);
+    box-shadow: 0 -10px 40px rgba(0,0,0,0.2);
+    border: none;
+    border-top: 1px solid var(--fsw-border);
+  }
+
+  .fsw-menu.active {
+    transform: translateY(0);
+  }
 }
+
