@@ -13,6 +13,10 @@ export default function RootLayout({ children }) {
 
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        <title>FLY International Tours and Travels</title>
+        <meta name="description" content="Premium Hajj, Umrah, and Global Travel Solutions including Visa, Air Ticketing, and Certificate Attestations." />
+      </head>
       <body className="site-body">
         {/* Hide public navbar on admin pages */}
         {!isAdminPage && <PremiumNavbar />}

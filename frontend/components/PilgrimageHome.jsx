@@ -4,10 +4,17 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import {
-  ShieldCheckIcon, GlobeAmericasIcon, HeartIcon, AcademicCapIcon
+  ShieldCheckIcon,
+  GlobeAmericasIcon,
+  HeartIcon,
+  AcademicCapIcon,
+  TicketIcon,
+  DocumentTextIcon,
+  ArrowUpRightIcon,
 } from "@heroicons/react/24/outline";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade, Pagination, Keyboard } from "swiper/modules";
+import { getServicePage } from "../data/servicePages";
 import "swiper/css";
 import "swiper/css/effect-fade";
 import "swiper/css/pagination";
@@ -15,6 +22,28 @@ import "swiper/css/pagination";
 export default function PilgrimageHome({ packages = [], flights = [] }) {
   const [activeTab, setActiveTab] = useState("Deluxe");
   const tabs = ["Super Saver", "Affordable", "Deluxe"];
+  const serviceHighlights = [
+    {
+      ...getServicePage("air-ticketing"),
+      icon: TicketIcon,
+      accent: "from-[#FFD76A]/50 via-[#FFE8A3]/20 to-transparent dark:from-[#D4AF37]/30 dark:via-[#D4AF37]/10 dark:to-transparent",
+    },
+    {
+      ...getServicePage("visit-visa"),
+      icon: GlobeAmericasIcon,
+      accent: "from-[#73C7FF]/45 via-[#D6F0FF]/20 to-transparent dark:from-[#3BA7FF]/30 dark:via-[#3BA7FF]/10 dark:to-transparent",
+    },
+    {
+      ...getServicePage("certificate-attestations"),
+      icon: DocumentTextIcon,
+      accent: "from-[#FFB454]/45 via-[#FFE0B2]/20 to-transparent dark:from-[#F59E0B]/25 dark:via-[#F59E0B]/10 dark:to-transparent",
+    },
+    {
+      ...getServicePage("study-abroad"),
+      icon: AcademicCapIcon,
+      accent: "from-[#A78BFA]/35 via-[#E9DDFF]/18 to-transparent dark:from-[#8B5CF6]/20 dark:via-[#8B5CF6]/10 dark:to-transparent",
+    },
+  ];
 
   const filteredPackages = packages.filter((p) => {
     const category = p.category || p.plan || "Deluxe";
@@ -219,42 +248,96 @@ export default function PilgrimageHome({ packages = [], flights = [] }) {
 
 
 
-      {/* Global Reach & Connectivity Section (The "Paid Empty Section") */}
+      {/* Global Reach & Connectivity Section - REDESIGNED */}
       <section className="py-24 px-6 max-w-7xl mx-auto bg-transparent relative z-10">
-        <div className="glass-panel rounded-[40px] overflow-hidden border border-[var(--border)] relative flex flex-col items-center">
-          <div className="absolute inset-0 bg-black/40 z-10"></div>
+        <div className="relative rounded-[40px] overflow-hidden p-8 md:p-12 lg:p-16">
+          {/* Advanced Animated Background */}
+          <div className="absolute inset-0 bg-[var(--surface)] z-0 mix-blend-normal opacity-95"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-[var(--primary)]/10 via-[var(--surface)]/5 to-transparent z-0"></div>
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,var(--border)_1px,transparent_1px),linear-gradient(to_bottom,var(--border)_1px,transparent_1px)] bg-[size:24px_24px] z-0 opacity-40"></div>
+          <div className="absolute top-0 right-0 w-full h-[500px] bg-gradient-to-b from-[var(--primary)]/20 to-transparent blur-3xl z-0 pointer-events-none"></div>
 
-          <img
-            src="/global-travel-connections.png"
-            alt="Global Travel Connections"
-            className="w-full h-auto max-h-[600px] object-cover opacity-80"
-          />
+          <div className="relative z-20">
+            <div className="text-center mb-16">
+              <span className="inline-block py-1.5 px-4 rounded-full bg-[var(--surface-strong)] text-[var(--primary)] font-bold tracking-widest uppercase text-xs mb-4 shadow-sm border border-[var(--border)]">
+                Global Expertise
+              </span>
+              <h2 className="text-4xl md:text-5xl font-extrabold text-[var(--heading)] tracking-tight serif-heading mb-4">
+                Beyond Travel: <span className="text-transparent bg-clip-text bg-gradient-to-r from-[var(--primary)] to-[var(--accent)] italic">Complete Solutions</span>
+              </h2>
+              <p className="text-lg text-[var(--muted)] max-w-2xl mx-auto">
+                Discover our comprehensive suite of global services, meticulously designed to support your international aspirations with precision and care.
+              </p>
+            </div>
 
-          <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-center p-12">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="max-w-3xl"
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.8, staggerChildren: 0.2 }}
+              className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 text-left"
             >
-              <span className="text-[#D4AF37] font-bold tracking-[0.4em] uppercase text-xs mb-4 block">Global Network</span>
-              <h2 className="text-4xl md:text-6xl font-extrabold text-white mb-6 serif-heading leading-tight italic">
-                Connecting You to <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#F3D67A]">Every Corner</span> of the Globe
-              </h2>
-              <p className="text-lg text-gray-200/80 font-medium mb-10 leading-relaxed">
-                Whether it's the sacred lands of Saudi Arabia, the bustling cities of the Gulf, or your dreams of studying abroad, we bridge the gap with seamless visa services and global flight connections.
-              </p>
+              {serviceHighlights.map((service, idx) => {
+                const Icon = service.icon;
 
-              <div className="flex flex-wrap items-center justify-center gap-8 opacity-60">
-                {["Visa Assistance", "Ticket Booking", "Group Tours", "Corporate Travel", "Study Abroad"].map((service, idx) => (
-                  <span key={idx} className="text-white text-xs font-bold uppercase tracking-widest px-4 py-2 border border-white/20 rounded-full">{service}</span>
-                ))}
-              </div>
+                return (
+                  <Link
+                    key={service.slug || idx}
+                    href={`/services/${service.slug}`}
+                    className="group relative h-full flex flex-col rounded-[32px] bg-[var(--bg)] border border-[var(--border)] overflow-hidden transition-all duration-500 hover:-translate-y-3 hover:shadow-[var(--shadow)]"
+                  >
+                    {/* Hover Gradient Overlay */}
+                    <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-700 bg-gradient-to-br from-[var(--surface-strong)] to-transparent z-0"></div>
+                    
+                    {/* Animated Border Glow */}
+                    <div className="absolute -inset-[1px] rounded-[32px] bg-gradient-to-br from-[var(--primary)] to-[var(--accent)] opacity-0 group-hover:opacity-100 blur-[2px] transition-opacity duration-500 z-0"></div>
+                    <div className="absolute inset-[1px] rounded-[31px] bg-[var(--bg)] z-0 group-hover:bg-[var(--surface)] transition-colors duration-500"></div>
+                    <div className={`absolute inset-0 bg-gradient-to-b ${service.accent} opacity-20 dark:opacity-40 z-0 pointer-events-none rounded-[31px]`}></div>
+
+                    <div className="relative z-10 p-8 flex flex-col flex-1">
+                      {/* Icon Header */}
+                      <div className="flex items-start justify-between mb-8">
+                        <div className="relative">
+                          {/* Inner Icon Background */}
+                          <div className="absolute inset-0 bg-[var(--surface-strong)] rounded-[20px] transform -rotate-6 group-hover:rotate-0 transition-transform duration-500"></div>
+                          <div className="relative flex h-16 w-16 items-center justify-center rounded-[20px] bg-[var(--surface)] border border-[var(--border)] shadow-sm transform group-hover:scale-110 transition-transform duration-500 z-10">
+                            <Icon className="h-8 w-8 text-[var(--primary)]" />
+                          </div>
+                        </div>
+                        <div className="w-10 h-10 rounded-full border border-[var(--border)] bg-[var(--surface)] flex items-center justify-center transform group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform duration-500 shadow-sm">
+                          <ArrowUpRightIcon className="h-5 w-5 text-[var(--muted)] group-hover:text-[var(--primary)] transition-colors" />
+                        </div>
+                      </div>
+
+                      {/* Content */}
+                      <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[var(--primary)] mb-3 block">
+                        {service.eyebrow || "Services"}
+                      </span>
+                      <h3 className="mb-4 text-2xl font-extrabold text-[var(--heading)] leading-tight group-hover:text-[var(--primary)] transition-colors duration-300">
+                        {service.title}
+                      </h3>
+                      <p className="mb-6 text-sm leading-relaxed text-[var(--text-muted)] line-clamp-2">
+                        {service.highlights?.[0] || service.summary}
+                      </p>
+
+                      <div className="mt-auto pt-6 border-t border-[var(--border)] space-y-3">
+                        {service.highlights?.slice(1, 3).map((point, i) => (
+                          <div key={i} className="flex items-start gap-3">
+                            <div className="flex-shrink-0 mt-1.5">
+                              <div className="w-1.5 h-1.5 rounded-full bg-[var(--primary)] opacity-60 group-hover:opacity-100 group-hover:scale-150 transition-all duration-300"></div>
+                            </div>
+                            <span className="text-[13px] text-[var(--muted)] leading-tight flex-1">
+                              {point}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </Link>
+                );
+              })}
             </motion.div>
           </div>
-
-          {/* Decorative Corner Glow */}
-          <div className="absolute -top-20 -left-20 w-80 h-80 bg-[#D4AF37]/20 rounded-full blur-[100px]"></div>
         </div>
       </section>
 

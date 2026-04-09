@@ -1,5 +1,16 @@
-const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
+function normalizeApiBaseUrl(value) {
+  const normalized = (value || "").trim().replace(/\/+$/, "");
+
+  if (!normalized) {
+    return "http://localhost:5000/api";
+  }
+
+  return normalized.endsWith("/api") ? normalized : `${normalized}/api`;
+}
+
+const API_BASE_URL = normalizeApiBaseUrl(
+  process.env.NEXT_PUBLIC_API_ORIGIN || process.env.NEXT_PUBLIC_API_URL
+);
 
 async function handleResponse(response) {
   if (!response.ok) {
