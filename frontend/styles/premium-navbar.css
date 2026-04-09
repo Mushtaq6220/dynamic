@@ -27,17 +27,17 @@
     --glass-border: rgba(11, 60, 93, 0.08);
     --text-main: #0B3C5D;
     --text-muted: #5f7d9b;
-    --nav-item-bg: rgba(11, 60, 93, 0.06);
-    --nav-item-hover: linear-gradient(135deg, rgba(212, 175, 55, 0.18), rgba(11, 60, 93, 0.06));
+    --nav-item-bg: rgba(248, 250, 252, 0.7);
+    --nav-item-hover: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.02));
     --logo-bg: #ffffff;
-    --logo-shadow: none;
+    --logo-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
     --logo-filter: none;
-    --bottom-border: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.5), transparent);
-    --dropdown-bg: linear-gradient(145deg, rgba(4, 24, 40, 0.98), rgba(10, 43, 69, 0.95));
-    --dropdown-border: rgba(212, 175, 55, 0.28);
-    --dropdown-text: #f8fafc;
-    --dropdown-muted: rgba(203, 213, 225, 0.8);
-    --dropdown-item-hover: linear-gradient(135deg, rgba(212, 175, 55, 0.24), rgba(255, 255, 255, 0.08));
+    --bottom-border: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.3), transparent);
+    --dropdown-bg: #ffffff;
+    --dropdown-border: rgba(11, 60, 93, 0.08);
+    --dropdown-text: #0B3C5D;
+    --dropdown-muted: #5f7d9b;
+    --dropdown-item-hover: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.02));
 }
 
 /* Base Styles */
@@ -742,18 +742,19 @@
 [data-theme="dark"] .mobile-close-btn,
 [data-theme="dark"] .mobile-nav-link:not(.active),
 [data-theme="dark"] .mobile-subitem {
-    background: rgba(255, 255, 255, 0.92);
+    background: rgba(248, 250, 252, 0.92);
+    color: var(--text-main);
 }
 
 [data-theme="dark"] .mobile-nav-link.active {
-    background: linear-gradient(135deg, var(--accent-gold), #e5c158);
+    background: linear-gradient(135deg, var(--primary-blue), #1a4f76);
     color: white;
     border-color: transparent;
 }
 
 [data-theme="dark"] .mobile-subitem-icon {
-    background: rgba(212, 175, 55, 0.14);
-    color: var(--accent-gold);
+    background: rgba(11, 60, 93, 0.05);
+    color: var(--primary-blue);
 }
 
 [data-theme="dark"] .mobile-subitem:hover,
