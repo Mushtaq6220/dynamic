@@ -2,7 +2,7 @@
 
 import "../styles/globals.css";
 import PremiumFooter from "../components/PremiumFooter";
-import PremiumNavbar from "../components/PremiumNavbar";
+import ResponsiveNavbar from "../components/ResponsiveNavbar";
 import FloatingSupportWidget from "../components/FloatingSupportWidget";
 import PageTransitionProvider from "../components/PageTransitionProvider";
 import { usePathname } from "next/navigation";
@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
       </head>
       <body className="site-body">
         {/* Hide public navbar on admin pages */}
-        {!isAdminPage && <PremiumNavbar />}
+        {!isAdminPage && <ResponsiveNavbar />}
         
         <div className={isAdminPage ? "admin-content-wrapper" : "site-content"}>
           <PageTransitionProvider>

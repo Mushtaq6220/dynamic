@@ -1,4 +1,4 @@
-import PilgrimageHome from "../components/PilgrimageHome";
+import ResponsiveHome from "../components/ResponsiveHome";
 import { getGulfFlights, getPackages } from "../services/api";
 import AnimeWavesBackground from "../components/AnimeWavesBackground";
 
@@ -20,7 +20,7 @@ export default async function HomePage() {
   return (
     <>
       <AnimeWavesBackground />
-      <PilgrimageHome packages={packages} flights={flights} />
+      <ResponsiveHome packages={packages} flights={flights} />
     </>
   );
 }

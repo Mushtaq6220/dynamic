@@ -1,0 +1,384 @@
+"use client";
+
+import { useEffect, useState } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
+import {
+  HomeIcon,
+  ChevronDownIcon,
+  SunIcon,
+  MoonIcon,
+  XMarkIcon,
+  MapPinIcon,
+  StarIcon,
+  PaperAirplaneIcon,
+  DocumentCheckIcon,
+  AcademicCapIcon,
+  TicketIcon,
+  IdentificationIcon,
+  GlobeAltIcon,
+  CalendarDaysIcon,
+  BuildingOfficeIcon,
+} from "@heroicons/react/24/outline";
+import "../styles/premium-navbar.css";
+
+const menuData = [
+  {
+    label: "Home",
+    href: "/",
+    icon: <HomeIcon className="w-5 h-5" />,
+  },
+  {
+    label: "Packages",
+    href: "/packages",
+    dropdown: [
+      {
+        title: "Umrah Packages",
+        desc: "Guided spiritual journeys with premium amenities",
+        href: "/packages",
+        icon: <MoonIcon className="w-6 h-6" />,
+      },
+      {
+        title: "Hajj Packages",
+        desc: "Complete Hajj services with expert guidance",
+        href: "/packages/hajj",
+        icon: <StarIcon className="w-6 h-6" />,
+      },
+    ],
+  },
+  {
+    label: "Services",
+    href: "/services",
+    dropdown: [
+      {
+        title: "Air Ticketing",
+        desc: "Best fares for international travel",
+        href: "/services/air-ticketing",
+        icon: <PaperAirplaneIcon className="w-6 h-6" />,
+      },
+      {
+        title: "Certificate Attestation",
+        desc: "Professional document legalization",
+        href: "/services/certificate-attestations",
+        icon: <DocumentCheckIcon className="w-6 h-6" />,
+      },
+      {
+        title: "Study Abroad",
+        desc: "Global educational opportunities",
+        href: "/services/study-abroad",
+        icon: <AcademicCapIcon className="w-6 h-6" />,
+      },
+      {
+        title: "Train Ticket",
+        desc: "Hassle-free rail bookings",
+        href: "/services/train-ticket-booking",
+        icon: <TicketIcon className="w-6 h-6" />,
+      },
+      {
+        title: "Visa Stamping",
+        desc: "Reliable visa processing",
+        href: "/services/visa-stamping",
+        icon: <IdentificationIcon className="w-6 h-6" />,
+      },
+      {
+        title: "Visit Visa",
+        desc: "Leisure and business travel visas",
+        href: "/services/visit-visa",
+        icon: <GlobeAltIcon className="w-6 h-6" />,
+      },
+    ],
+  },
+  {
+    label: "Resources",
+    href: "/resources",
+    dropdown: [
+      {
+        title: "Makkah Ziyarat",
+        desc: "Sacred sites exploration in Makkah",
+        href: "/resources/makkah-ziyarats",
+        icon: <MapPinIcon className="w-6 h-6" />,
+      },
+      {
+        title: "Madina Ziyarat",
+        desc: "Historical visits in the Prophet's city",
+        href: "/resources/madinah-ziyarats",
+        icon: <MapPinIcon className="w-6 h-6" />,
+      },
+    ],
+  },
+  {
+    label: "More",
+    href: null,
+    dropdown: [
+      {
+        title: "Flight Schedules",
+        desc: "Real-time updates on flights",
+        href: "/flights",
+        icon: <CalendarDaysIcon className="w-6 h-6" />,
+      },
+      {
+        title: "Nearby Hotels",
+        desc: "Premium stay near the holy sites",
+        href: "/nearby-hotels",
+        icon: <BuildingOfficeIcon className="w-6 h-6" />,
+      },
+    ],
+  },
+  {
+    label: "About Us",
+    href: "/about",
+  },
+];
+
+export default function PremiumNavbar() {
+  const pathname = usePathname();
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [theme, setTheme] = useState("light");
+  const [activeDropdown, setActiveDropdown] = useState(null);
+  const [expandedMobileItems, setExpandedMobileItems] = useState([]);
+
+  const toggleMobileItem = (idx) => {
+    setExpandedMobileItems((prev) => (
+      prev.includes(idx) ? prev.filter((i) => i !== idx) : [...prev, idx]
+    ));
+  };
+
+  const isItemActive = (item) => {
+    if (item.href && item.href !== "/" && pathname.startsWith(item.href)) {
+      return true;
+    }
+
+    if (item.href === pathname) {
+      return true;
+    }
+
+    return item.dropdown?.some((subItem) => pathname === subItem.href) || false;
+  };
+
+  // Handle Scroll effect
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Theme support
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("site-theme") || 
+      (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+    setTheme(savedTheme);
+    document.documentElement.dataset.theme = savedTheme;
+  }, []);
+
+  useEffect(() => {
+    setMobileMenuOpen(false);
+    setActiveDropdown(null);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (!mobileMenuOpen) {
+      document.body.style.overflow = "";
+      return;
+    }
+
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileMenuOpen]);
+
+  const toggleTheme = () => {
+    const newTheme = theme === "light" ? "dark" : "light";
+    setTheme(newTheme);
+    document.documentElement.dataset.theme = newTheme;
+    localStorage.setItem("site-theme", newTheme);
+  };
+
+  return (
+    <header className={`premium-header ${scrolled ? "scrolled" : ""}`}>
+      <div className="nav-glow"></div>
+      <div className="nav-container">
+        {/* Left: Logo */}
+        <Link href="/" className="brand-mark">
+          <Image
+            src="/fly-international-logo-latest.png"
+            alt="Fly International Logo"
+            width={200}
+            height={50}
+            priority
+            className="brand-logo"
+          />
+        </Link>
+
+        {/* Right: Actions */}
+        <div className="nav-actions">
+          <div
+            onClick={toggleTheme}
+            className="theme-switch-wrapper"
+            role="switch"
+            aria-checked={theme === "dark"}
+            aria-label="Toggle Theme"
+          >
+            <div className="theme-switch-circle">
+               {theme === "dark" ? (
+                 <MoonIcon className="w-4 h-4 text-slate-800" />
+               ) : (
+                 <SunIcon className="w-4 h-4 text-yellow-500" />
+               )}
+            </div>
+          </div>
+
+          <Link href="/contact" className="cta-btn">
+            Get Started
+          </Link>
+
+          {/* Hamburger */}
+          <button
+            type="button"
+            className={`hamburger ${mobileMenuOpen ? "active" : ""}`}
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileMenuOpen}
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <>
+            <motion.div 
+              className="mobile-menu-backdrop open"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setMobileMenuOpen(false)}
+            />
+            <motion.div 
+              className="mobile-menu-overlay open"
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
+            >
+            <div className="mobile-menu-header">
+              <Link href="/" className="mobile-menu-brand" onClick={() => setMobileMenuOpen(false)}>
+                <Image
+                  src="/fly-international-logo-latest.png"
+                  alt="Fly International Logo"
+                  width={180}
+                  height={52}
+                  className="mobile-menu-logo"
+                />
+              </Link>
+              <button
+                type="button"
+                className="mobile-close-btn"
+                onClick={() => setMobileMenuOpen(false)}
+                aria-label="Close menu"
+              >
+                <XMarkIcon className="w-5 h-5" />
+              </button>
+            </div>
+
+            <div className="mobile-menu-intro">
+              <p className="mobile-menu-eyebrow">Mobile navigation</p>
+              <p className="mobile-menu-title">Browse every page and service from one compact menu.</p>
+            </div>
+
+            {menuData.map((item, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: idx * 0.1 }}
+                className="w-full"
+              >
+                {item.dropdown ? (
+                  <div className={`mobile-accordion ${expandedMobileItems.includes(idx) ? "expanded" : ""}`}>
+                    <div className="mobile-nav-row">
+                      {item.href ? (
+                        <Link
+                          href={item.href}
+                          className={`mobile-nav-link mobile-nav-link-main ${isItemActive(item) ? "active" : ""}`}
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          {item.label}
+                        </Link>
+                      ) : (
+                        <span className={`mobile-nav-link mobile-nav-link-main ${isItemActive(item) ? "active" : ""}`}>
+                          {item.label}
+                        </span>
+                      )}
+                      <button
+                        type="button"
+                        onClick={() => toggleMobileItem(idx)}
+                        className="mobile-nav-toggle"
+                        aria-expanded={expandedMobileItems.includes(idx)}
+                        aria-label={`Toggle ${item.label} menu`}
+                      >
+                        <ChevronDownIcon className={`w-5 h-5 transition-transform ${expandedMobileItems.includes(idx) ? "rotate-180" : ""}`} />
+                      </button>
+                    </div>
+                    <AnimatePresence>
+                      {expandedMobileItems.includes(idx) && (
+                        <motion.div 
+                          initial={{ height: 0, opacity: 0 }}
+                          animate={{ height: "auto", opacity: 1 }}
+                          exit={{ height: 0, opacity: 0 }}
+                          className="mobile-submenu"
+                        >
+                          {item.dropdown.map((subItem, sIdx) => (
+                             <Link 
+                               key={sIdx}
+                               href={subItem.href}
+                               className={`mobile-subitem ${pathname === subItem.href ? "active" : ""}`}
+                               onClick={() => setMobileMenuOpen(false)}
+                             >
+                                <div className="mobile-subitem-icon">
+                                   {subItem.icon}
+                                </div>
+                                <div className="mobile-subitem-content">
+                                   <span className="mobile-subitem-title">{subItem.title}</span>
+                                   <span className="mobile-subitem-desc">{subItem.desc}</span>
+                                </div>
+                             </Link>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                ) : (
+                  <Link 
+                    href={item.href} 
+                    className={`mobile-nav-link ${isItemActive(item) ? "active" : ""}`}
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                )}
+              </motion.div>
+            ))}
+            <Link 
+              href="/contact" 
+              className="cta-btn mt-6 mx-auto w-full max-w-sm flex justify-center py-4"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Get Started
+            </Link>
+          </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+    </header>
+  );
+}
