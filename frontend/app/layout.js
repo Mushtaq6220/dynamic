@@ -16,6 +16,7 @@ export default function RootLayout({ children }) {
       <head>
         <title>FLY International Tours and Travels</title>
         <meta name="description" content="Premium Hajj, Umrah, and Global Travel Solutions including Visa, Air Ticketing, and Certificate Attestations." />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
       </head>
       <body className="site-body">
         {/* Hide public navbar on admin pages */}
