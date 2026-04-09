@@ -333,12 +333,12 @@ button {
   gap: 0;
   flex-shrink: 0;
   padding-right: 18px;
-  min-width: 360px;
-  margin-left: -42px;
+  min-width: unset;
+  margin-left: 0;
 }
 
 .brand-logo {
-  width: min(100%, 440px);
+  width: min(100%, 280px);
   height: auto;
   max-height: 88px;
   object-fit: contain;
