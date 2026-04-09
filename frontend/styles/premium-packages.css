@@ -1,19 +1,22 @@
 /* Premium Packages Styling */
 
 :root {
-  --pp-bg-light: #fdfdfd;
-  --pp-card-bg-light: rgba(255, 255, 255, 0.9);
-  --pp-card-border-light: rgba(11, 60, 93, 0.08);
-  --pp-text-main-light: #1e293b;
-  --pp-text-muted-light: #64748b;
-  --pp-gold: #b8912d; /* Muted Gold */
+  --pp-bg-light: #ffffff;
+  --pp-card-bg-light: #f8fbff;
+  --pp-card-border-light: rgb(255, 203, 72);
+  --pp-text-main-light: #1e3fe4;
+  --pp-text-muted-light: #e476ff;
+  --pp-gold: #b8912d;
+  /* Muted Gold */
   --pp-gold-glow: rgba(184, 145, 45, 0.2);
   --pp-shadow-light: 0 4px 20px rgba(0, 0, 0, 0.03);
   --pp-hover-shadow-light: 0 10px 30px rgba(0, 0, 0, 0.06);
-  --pp-btn-grad: linear-gradient(135deg, #0f2a44 0%, #1e293b 100%); /* Blue/Dark grey button instead of bright gold */
+  --pp-btn-grad: linear-gradient(135deg, #0f2a44 0%, #1e293b 100%);
+  /* Blue/Dark grey button instead of bright gold */
 }
 
-.dark, [data-theme="dark"] {
+.dark,
+[data-theme="dark"] {
   --pp-bg-light: #06121e;
   --pp-card-bg-light: rgba(15, 23, 42, 0.8);
   --pp-card-border-light: rgba(255, 255, 255, 0.06);
@@ -27,7 +30,8 @@
 .pp-page-wrapper {
   background: var(--pp-bg-light);
   min-height: 100vh;
-  padding: 140px 20px 80px; /* Increased top padding for navbar */
+  padding: 140px 20px 80px;
+  /* Increased top padding for navbar */
   color: var(--pp-text-main-light);
   transition: background 0.5s ease;
   font-family: 'Inter', sans-serif;
@@ -52,15 +56,20 @@
 .pp-header-glass::before {
   content: '';
   position: absolute;
-  top: 0; left: 0; right: 0; height: 3px;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
   background: var(--pp-btn-grad);
 }
 
 .pp-title {
-  font-size: 2rem; /* Reduced size */
+  font-size: 2rem;
+  /* Reduced size */
   font-weight: 700;
   margin-bottom: 12px;
-  color: var(--pp-text-main-light); /* Removed bright gradient */
+  color: var(--pp-text-main-light);
+  /* Removed bright gradient */
   letter-spacing: -0.5px;
 }
 
@@ -89,12 +98,12 @@
   font-weight: 600;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
 }
 
 .pp-tab-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
 }
 
 .pp-tab-btn.active {
@@ -153,14 +162,14 @@
 .pp-card-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, transparent 60%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, transparent 60%);
 }
 
 .pp-card-badge {
   position: absolute;
   top: 16px;
   left: 16px;
-  background: rgba(255,255,255,0.9);
+  background: rgba(255, 255, 255, 0.9);
   color: #1a1a1a;
   padding: 6px 14px;
   border-radius: 50px;
@@ -168,13 +177,13 @@
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 1px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .dark .pp-card-badge {
-  background: rgba(0,0,0,0.6);
+  background: rgba(0, 0, 0, 0.6);
   color: #fff;
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .pp-card-content {
@@ -185,7 +194,8 @@
 }
 
 .pp-card-title {
-  font-size: 1.25rem; /* Reduced size */
+  font-size: 1.25rem;
+  /* Reduced size */
   font-weight: 700;
   margin-bottom: 8px;
   color: var(--pp-text-main-light);
@@ -264,7 +274,8 @@
 .pp-detail-wrapper {
   background: var(--pp-bg-light);
   min-height: 100vh;
-  padding: 140px 20px 80px; /* Navbar clearance */
+  padding: 140px 20px 80px;
+  /* Navbar clearance */
   color: var(--pp-text-main-light);
 }
 
@@ -273,7 +284,7 @@
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  lg:flex-row;
+  lg: flex-row;
   gap: 40px;
 }
 
@@ -292,10 +303,14 @@
   background-clip: padding-box;
   border: 2px solid transparent;
 }
+
 .pp-detail-glass.gradient-border::before {
   content: '';
   position: absolute;
-  top: -2px; left: -2px; right: -2px; bottom: -2px;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
   background: linear-gradient(135deg, var(--pp-gold), transparent 40%, transparent 60%, var(--pp-gold));
   z-index: -1;
   border-radius: 34px;

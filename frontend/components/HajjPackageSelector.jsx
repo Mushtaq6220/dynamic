@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { packageCategories, hajjPackages } from "../data/packageCatalog";
-import { 
-  CheckCircleIcon, StarIcon, DocumentCheckIcon, ShieldCheckIcon, BuildingOfficeIcon, UserGroupIcon 
+import {
+  CheckCircleIcon, StarIcon, DocumentCheckIcon, ShieldCheckIcon, BuildingOfficeIcon, UserGroupIcon
 } from "@heroicons/react/24/outline";
 import SectionReveal from "./SectionReveal";
 import "../styles/premium-packages.css";
@@ -13,11 +13,11 @@ export default function HajjPackageSelector() {
     <main className="pp-page-wrapper">
       <SectionReveal>
         <section className="pp-header-glass">
-            {/* Added badge for context */}
+          {/* Added badge for context */}
           <div className="flex justify-center mb-4">
-             <span className="bg-[#D4AF37] text-white text-[10px] font-black uppercase tracking-[0.2em] px-4 py-1.5 rounded-full shadow-lg">
-                Reserving For 2026
-             </span>
+            <span className="bg-[#D4AF37] text-white text-[10px] font-black uppercase tracking-[0.2em] px-4 py-1.5 rounded-full shadow-lg">
+              Reserving For 2026
+            </span>
           </div>
           <h1 className="pp-title">Choose Your Perfect Hajj Journey</h1>
           <p className="pp-subtitle">
@@ -85,11 +85,11 @@ export default function HajjPackageSelector() {
             <div className="pp-card p-10 h-full">
               <h3 className="pp-card-title !text-2xl mb-8 flex items-center gap-3">
                 <div className="w-10 h-10 bg-[#0B3C5D]/10 rounded-xl flex items-center justify-center">
-                   <DocumentCheckIcon className="w-6 h-6 text-[#0B3C5D]" />
+                  <DocumentCheckIcon className="w-6 h-6 text-[#0B3C5D]" />
                 </div>
                 Before You Go
               </h3>
-              
+
               <div className="space-y-8">
                 <div>
                   <h4 className="font-bold text-[#D4AF37] uppercase tracking-widest text-xs mb-3">A. Hajj Visa Process</h4>
@@ -118,7 +118,7 @@ export default function HajjPackageSelector() {
             <div className="pp-card p-10 h-full border-t-4 border-t-[#D4AF37]">
               <h3 className="pp-card-title !text-2xl mb-8 flex items-center gap-3">
                 <div className="w-10 h-10 bg-[#D4AF37]/10 rounded-xl flex items-center justify-center">
-                   <StarIcon className="w-6 h-6 text-[#D4AF37]" />
+                  <StarIcon className="w-6 h-6 text-[#D4AF37]" />
                 </div>
                 Essentials & Planning
               </h3>
@@ -157,33 +157,33 @@ export default function HajjPackageSelector() {
 
         <div className="space-y-8 mb-32">
           {[
-            { 
-              day: "Day 1", 
-              date: "8 Dhul-Hijjah", 
+            {
+              day: "Day 1",
+              date: "8 Dhul-Hijjah",
               title: "Yaum al-Tarwiyah",
               steps: ["State of Ihram: Enter from Miqat point.", "Intention (Niyyah): Verbally declare intention.", "Travel to Mina: Spend the night in tents.", "Prayer: Perform shortened prayers."]
             },
-            { 
-              day: "Day 2", 
-              date: "9 Dhul-Hijjah", 
+            {
+              day: "Day 2",
+              date: "9 Dhul-Hijjah",
               title: "Day of Arafat",
               steps: ["Travel to Arafat by mid-morning.", "Standing (Wuquf): Main ritual until sunset.", "Combined Prayers: Dhuhr + Asr.", "Travel to Muzdalifah after sunset.", "Sleep under the open sky & collect pebbles."]
             },
-            { 
-              day: "Day 3", 
-              date: "10 Dhul-Hijjah", 
+            {
+              day: "Day 3",
+              date: "10 Dhul-Hijjah",
               title: "Eid al-Adha",
               steps: ["Rami al-Jamarat: Stone the largest pillar.", "Animal Sacrifice (Qurbani).", "Shaving/Cutting Hair: Tahlul.", "Tawaf al-Ifadah: Return to Makkah for Sa’i."]
             },
-            { 
-              day: "Day 4 & 5", 
-              date: "11-12 Dhul-Hijjah", 
+            {
+              day: "Day 4 & 5",
+              date: "11-12 Dhul-Hijjah",
               title: "Tashreeq Days",
               steps: ["Stay in Mina & stone all three Jamarat.", "Optional: Leave Mina before sunset on 12th."]
             },
-            { 
-              day: "Optional 6", 
-              date: "13 Dhul-Hijjah", 
+            {
+              day: "Optional 6",
+              date: "13 Dhul-Hijjah",
               title: "Final Rami",
               steps: ["Final stoning at all three Jamarat.", "Return to Makkah."]
             }
@@ -213,39 +213,39 @@ export default function HajjPackageSelector() {
 
       {/* Why Choose Us Section - REDESIGNED for Premium Feel */}
       <section className="mt-32 max-w-7xl mx-auto px-6 pb-24">
-         <div className="text-center mb-16 px-4">
-            <span className="text-[#D4AF37] font-extrabold tracking-[0.3em] uppercase text-[10px] mb-4 block">Trust & Excellence</span>
-            <h2 className="pp-title !text-4xl md:text-5xl !leading-tight uppercase tracking-tight">Unmatched Hajj <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B3C5D] dark:from-[#D4AF37] to-[#1a4f76] dark:to-[#F3D67A] italic">Experience</span></h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-[#D4AF37] to-transparent mx-auto mt-6"></div>
-         </div>
-         
-         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              { title: "Trusted Service", desc: "Decades of verified expertise in spiritual travel coordination.", icon: ShieldCheckIcon },
-              { title: "Comfortable Stay", desc: "Top-rated hotels located within minutes of the Holy sites.", icon: BuildingOfficeIcon },
-              { title: "Guided Support", desc: "Scholar-led guidance ensuring your pilgrimage is perfectly executed.", icon: UserGroupIcon },
-              { title: "Affordability", desc: "Premium quality services balanced for value-focused pilgrims.", icon: StarIcon }
-            ].map((perk, i) => {
-               const Icon = perk.icon;
-               return (
-                <div key={i} className="group relative transition-all duration-700 hover:-translate-y-3">
-                   {/* Animated Background Glow */}
-                   <div className="absolute -inset-[2px] rounded-[32px] bg-gradient-to-b from-[#D4AF37]/20 to-transparent opacity-0 group-hover:opacity-100 blur-[8px] transition-opacity duration-700"></div>
-                   
-                   <div className="relative h-full flex flex-col items-center text-center bg-white dark:bg-[#0A0F1C] border border-[var(--border)] dark:border-[#1E293B] rounded-[32px] p-10 shadow-sm group-hover:shadow-[0_20px_40px_rgba(212,175,55,0.1)] transition-all duration-500 overflow-hidden">
-                      <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#D4AF37]/5 to-transparent rounded-full -translate-y-16 translate-x-16 group-hover:scale-150 transition-transform duration-1000"></div>
-                      
-                      <div className="relative w-16 h-16 bg-[#D4AF37]/10 dark:bg-[#D4AF37]/5 rounded-[22px] flex items-center justify-center mb-8 border border-[#D4AF37]/20 transition-all duration-500 group-hover:bg-[#D4AF37] group-hover:rotate-[360deg] group-hover:shadow-[0_0_20px_rgba(212,175,55,0.4)]">
-                         <Icon className="w-8 h-8 text-[#D4AF37] group-hover:text-white transition-colors duration-500" />
-                      </div>
-                      
-                      <h3 className="text-xl font-bold text-[var(--heading)] mb-4 tracking-tight group-hover:text-[#D4AF37] transition-colors">{perk.title}</h3>
-                      <p className="text-[var(--text-muted)] leading-relaxed text-sm font-medium">{perk.desc}</p>
-                   </div>
+        <div className="text-center mb-16 px-4">
+          <span className="text-[#D4AF37] font-extrabold tracking-[0.3em] uppercase text-[10px] mb-4 block">Trust & Excellence</span>
+          <h2 className="pp-title !text-4xl md:text-5xl !leading-tight uppercase tracking-tight">Unmatched Hajj <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B3C5D] dark:from-[#D4AF37] to-[#1a4f76] dark:to-[#F3D67A] italic">Experience</span></h2>
+          <div className="w-24 h-1 bg-gradient-to-r from-[#D4AF37] to-transparent mx-auto mt-6"></div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {[
+            { title: "Trusted Service", desc: "Decades of verified expertise in spiritual travel coordination.", icon: ShieldCheckIcon },
+            { title: "Comfortable Stay", desc: "Top-rated hotels located within minutes of the Holy sites.", icon: BuildingOfficeIcon },
+            { title: "Guided Support", desc: "Scholar-led guidance ensuring your pilgrimage is perfectly executed.", icon: UserGroupIcon },
+            { title: "Affordability", desc: "Premium quality services balanced for value-focused pilgrims.", icon: StarIcon }
+          ].map((perk, i) => {
+            const Icon = perk.icon;
+            return (
+              <div key={i} className="group relative transition-all duration-700 hover:-translate-y-3">
+                {/* Animated Background Glow */}
+                <div className="absolute -inset-[2px] rounded-[32px] bg-gradient-to-b from-[#D4AF37]/20 to-transparent opacity-0 group-hover:opacity-100 blur-[8px] transition-opacity duration-700"></div>
+
+                <div className="relative h-full flex flex-col items-center text-center bg-white :bg-[#0A0F1C] border border-slate-100 dark:border-[#1E293B] rounded-[32px] p-10 shadow-sm group-hover:shadow-[0_20px_40px_rgba(212,175,55,0.1)] transition-all duration-500 overflow-hidden">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#D4AF37]/5 to-transparent rounded-full -translate-y-16 translate-x-16 group-hover:scale-150 transition-transform duration-1000"></div>
+
+                  <div className="relative w-16 h-16 bg-[#D4AF37]/10 dark:bg-[#D4AF37]/5 rounded-[22px] flex items-center justify-center mb-8 border border-[#D4AF37]/20 transition-all duration-500 group-hover:bg-[#D4AF37] group-hover:rotate-[360deg] group-hover:shadow-[0_0_20px_rgba(212,175,55,0.4)]">
+                    <Icon className="w-8 h-8 text-[#D4AF37] group-hover:text-white transition-colors duration-500" />
+                  </div>
+
+                  <h3 className="text-xl font-bold text-[#0B3C5D] dark:text-[#F3D67A] mb-4 tracking-tight group-hover:text-[#D4AF37] dark:group-hover:text-white transition-colors">{perk.title}</h3>
+                  <p className="text-[#475569] dark:text-[#94a3b8] leading-relaxed text-sm font-medium">{perk.desc}</p>
                 </div>
-               );
-            })}
-         </div>
+              </div>
+            );
+          })}
+        </div>
       </section>
     </main>
   );
