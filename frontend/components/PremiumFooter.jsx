@@ -69,13 +69,13 @@ export default function PremiumFooter() {
               Pioneering your sacred journey with world-class facilities, seamless visa processing, and dedicated spiritual guidance to Makkah and Madinah.
             </p>
             <div className="pf-socials">
-              <a href="#" className="pf-social-icon" aria-label="Facebook">
+              <a href="https://www.facebook.com" target="_blank" rel="noreferrer" className="pf-social-icon" aria-label="Facebook">
                 <FacebookIcon />
               </a>
-              <a href="#" className="pf-social-icon" aria-label="Twitter">
+              <a href="https://www.x.com" target="_blank" rel="noreferrer" className="pf-social-icon" aria-label="Twitter">
                 <TwitterIcon />
               </a>
-              <a href="#" className="pf-social-icon" aria-label="Instagram">
+              <a href="https://www.instagram.com/fly_internationaltravels?igsh=cHYyMGptamVhN3Z0" target="_blank" rel="noreferrer" className="pf-social-icon" aria-label="Instagram">
                 <InstagramIcon />
               </a>
             </div>
@@ -131,11 +131,11 @@ export default function PremiumFooter() {
             </a>
 
             <div className="pf-contact-buttons">
-              <a href="tel:+916281144625" className="pf-btn pf-btn-primary">
+              <a href="tel:+919951335542" className="pf-btn pf-btn-primary">
                 Call Now
               </a>
               <a 
-                href="https://wa.me/916281144625?text=Hello,%20I%20need%20help%20with%20Umrah%20packages" 
+                href="https://wa.me/919951335542?text=Assalamu%20Alaikum%20wa%20Rahmatullahi%20wa%20Barakatuh,%20I%20would%20like%20to%20get%20more%20information%20about%20your%20Hajj%20and%20Umrah%20services.%20Kindly%20assist%20me" 
                 target="_blank" 
                 rel="noreferrer"
                 className="pf-btn pf-btn-secondary"

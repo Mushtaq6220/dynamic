@@ -4,9 +4,9 @@ import { useState } from "react";
 import { ChatBubbleLeftRightIcon, PhoneIcon, EnvelopeIcon, XMarkIcon } from "@heroicons/react/24/outline";
 
 const supportLinks = [
-  { label: "Phone", icon: <PhoneIcon className="w-5 h-5" />, href: "tel:+916281144625" },
+  { label: "Phone", icon: <PhoneIcon className="w-5 h-5" />, href: "tel:+919951335542" },
   { label: "Email", icon: <EnvelopeIcon className="w-5 h-5" />, href: "mailto:support@hajjumrahtravels.com" },
-  { label: "WhatsApp", icon: <ChatBubbleLeftRightIcon className="w-5 h-5" />, href: "https://wa.me/916281144625?text=Hello,%20I%20would%20like%20to%20get%20more%20information%20about%20your%20services.%20Can%20you%20please%20assist%20me?" },
+  { label: "WhatsApp", icon: <ChatBubbleLeftRightIcon className="w-5 h-5" />, href: "https://wa.me/919951335542?text=Assalamu%20Alaikum%20wa%20Rahmatullahi%20wa%20Barakatuh,%20I%20would%20like%20to%20get%20more%20information%20about%20your%20Hajj%20and%20Umrah%20services.%20Kindly%20assist%20me" },
 ];
 export default function WhatsAppButton() {
   const [open, setOpen] = useState(false);

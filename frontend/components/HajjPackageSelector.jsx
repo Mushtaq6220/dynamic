@@ -211,27 +211,40 @@ export default function HajjPackageSelector() {
         </div>
       </div>
 
-      {/* Why Choose Us Section - Integrated to match context but using pp classes */}
-      <section className="mt-24 max-w-7xl mx-auto px-6">
-         <div className="text-center mb-16">
-            <h2 className="pp-title">Unmatched Hajj Experience</h2>
-            <p className="pp-subtitle">Trusted by thousands for a decade.</p>
+      {/* Why Choose Us Section - REDESIGNED for Premium Feel */}
+      <section className="mt-32 max-w-7xl mx-auto px-6 pb-24">
+         <div className="text-center mb-16 px-4">
+            <span className="text-[#D4AF37] font-extrabold tracking-[0.3em] uppercase text-[10px] mb-4 block">Trust & Excellence</span>
+            <h2 className="pp-title !text-4xl md:text-5xl !leading-tight uppercase tracking-tight">Unmatched Hajj <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#0B3C5D] dark:from-[#D4AF37] to-[#1a4f76] dark:to-[#F3D67A] italic">Experience</span></h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-[#D4AF37] to-transparent mx-auto mt-6"></div>
          </div>
-         <div className="pp-grid">
+         
+         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { title: "Trusted Service", desc: "Decades of verified expertise in spiritual travel coordination." },
-              { title: "Comfortable Stay", desc: "Top-rated hotels located within minutes of the Holy sites." },
-              { title: "Guided Support", desc: "Scholar-led guidance ensuring your pilgrimage is perfectly executed." },
-              { title: "Affordability", desc: "Premium quality services balanced for value-focused pilgrims." }
-            ].map((perk, i) => (
-               <div key={i} className="pp-card p-8 text-center flex flex-col items-center">
-                  <div className="w-16 h-16 bg-[#D4AF37]/10 rounded-2xl flex items-center justify-center mb-6">
-                     <StarIcon className="w-8 h-8 text-[#D4AF37]" />
-                  </div>
-                  <h3 className="pp-card-title">{perk.title}</h3>
-                  <p className="pp-subtitle" style={{fontSize: '0.9rem'}}>{perk.desc}</p>
-               </div>
-            ))}
+              { title: "Trusted Service", desc: "Decades of verified expertise in spiritual travel coordination.", icon: ShieldCheckIcon },
+              { title: "Comfortable Stay", desc: "Top-rated hotels located within minutes of the Holy sites.", icon: BuildingOfficeIcon },
+              { title: "Guided Support", desc: "Scholar-led guidance ensuring your pilgrimage is perfectly executed.", icon: UserGroupIcon },
+              { title: "Affordability", desc: "Premium quality services balanced for value-focused pilgrims.", icon: StarIcon }
+            ].map((perk, i) => {
+               const Icon = perk.icon;
+               return (
+                <div key={i} className="group relative transition-all duration-700 hover:-translate-y-3">
+                   {/* Animated Background Glow */}
+                   <div className="absolute -inset-[2px] rounded-[32px] bg-gradient-to-b from-[#D4AF37]/20 to-transparent opacity-0 group-hover:opacity-100 blur-[8px] transition-opacity duration-700"></div>
+                   
+                   <div className="relative h-full flex flex-col items-center text-center bg-white dark:bg-[#0A0F1C] border border-[var(--border)] dark:border-[#1E293B] rounded-[32px] p-10 shadow-sm group-hover:shadow-[0_20px_40px_rgba(212,175,55,0.1)] transition-all duration-500 overflow-hidden">
+                      <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#D4AF37]/5 to-transparent rounded-full -translate-y-16 translate-x-16 group-hover:scale-150 transition-transform duration-1000"></div>
+                      
+                      <div className="relative w-16 h-16 bg-[#D4AF37]/10 dark:bg-[#D4AF37]/5 rounded-[22px] flex items-center justify-center mb-8 border border-[#D4AF37]/20 transition-all duration-500 group-hover:bg-[#D4AF37] group-hover:rotate-[360deg] group-hover:shadow-[0_0_20px_rgba(212,175,55,0.4)]">
+                         <Icon className="w-8 h-8 text-[#D4AF37] group-hover:text-white transition-colors duration-500" />
+                      </div>
+                      
+                      <h3 className="text-xl font-bold text-[var(--heading)] mb-4 tracking-tight group-hover:text-[#D4AF37] transition-colors">{perk.title}</h3>
+                      <p className="text-[var(--text-muted)] leading-relaxed text-sm font-medium">{perk.desc}</p>
+                   </div>
+                </div>
+               );
+            })}
          </div>
       </section>
     </main>

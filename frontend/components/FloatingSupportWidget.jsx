@@ -31,13 +31,13 @@ export default function FloatingSupportWidget() {
           <h4 className="fsw-header-title">Need Help?</h4>
         </div>
         
-        <a href="tel:+916281144625" className="fsw-item">
+        <a href="tel:+919951335542" className="fsw-item">
           <div className="fsw-item-icon-wrap">
             <PhoneIcon className="fsw-item-icon" />
           </div>
           <div className="fsw-item-info">
             <span className="fsw-item-label">Call Us</span>
-            <span className="fsw-item-sub">+91 62811 44625</span>
+            <span className="fsw-item-sub">+91 99513 35542</span>
           </div>
         </a>
 
@@ -52,7 +52,7 @@ export default function FloatingSupportWidget() {
         </a>
 
         <a 
-          href="https://wa.me/916281144625?text=Hello,%20I%20would%20like%20to%20get%20more%20information%20about%20your%20services.%20Can%20you%20please%20assist%20me?" 
+          href="https://wa.me/919951335542?text=Assalamu%20Alaikum%20wa%20Rahmatullahi%20wa%20Barakatuh,%20I%20would%20like%20to%20get%20more%20information%20about%20your%20Hajj%20and%20Umrah%20services.%20Kindly%20assist%20me" 
           target="_blank" 
           rel="noreferrer" 
           className="fsw-item fsw-item-whatsapp"
