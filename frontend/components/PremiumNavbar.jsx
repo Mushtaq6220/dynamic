@@ -290,14 +290,17 @@ export default function PremiumNavbar() {
           </Link>
 
           {/* Hamburger */}
-          <div 
+          <button
+            type="button"
             className={`hamburger ${mobileMenuOpen ? "active" : ""}`}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileMenuOpen}
           >
             <span></span>
             <span></span>
             <span></span>
-          </div>
+          </button>
         </div>
       </div>
 
