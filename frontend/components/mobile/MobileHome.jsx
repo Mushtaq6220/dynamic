@@ -14,7 +14,7 @@ import {
 } from "@heroicons/react/24/outline";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade, Pagination, Keyboard } from "swiper/modules";
-import { getServicePage } from "../data/servicePages";
+import { getServicePage } from "../../data/servicePages";
 import "swiper/css";
 import "swiper/css/effect-fade";
 import "swiper/css/pagination";

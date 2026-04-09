@@ -22,7 +22,7 @@ import {
   CalendarDaysIcon,
   BuildingOfficeIcon,
 } from "@heroicons/react/24/outline";
-import "../styles/premium-navbar.css";
+import "../../styles/premium-navbar.css";
 
 const menuData = [
   {
