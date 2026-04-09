@@ -1,0 +1,225 @@
+/* Nearby Hotels Styling */
+
+:root {
+  --nh-gold: #D4AF37;
+  --nh-navy: #0B3C5D;
+  --nh-slate: #475569;
+}
+
+.nh-wrapper {
+  background: #fdfdfd;
+  min-height: 100vh;
+  padding-top: 100px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.dark .nh-wrapper, [data-theme="dark"] .nh-wrapper {
+  background: #0A0F1C;
+}
+
+/* Hero Section */
+.nh-hero {
+  position: relative;
+  height: 450px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  overflow: hidden;
+  margin-bottom: 60px;
+}
+
+.nh-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(11, 60, 93, 0.7), rgba(0, 0, 0, 0.5));
+  z-index: 1;
+}
+
+.nh-hero-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.1);
+  filter: blur(2px);
+}
+
+.nh-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 0 20px;
+}
+
+/* Section Controls */
+.nh-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 50px;
+}
+
+.nh-tab-btn {
+  padding: 12px 30px;
+  border-radius: 50px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: 2px solid var(--nh-gold);
+  color: var(--nh-gold);
+}
+
+.nh-tab-btn.active {
+  background: var(--nh-gold);
+  color: white;
+  box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+}
+
+/* Hotel Grid */
+.nh-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 30px;
+  padding: 20px;
+  max-width: 1300px;
+  margin: 0 auto 100px;
+}
+
+/* Hotel Card */
+.nh-card {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(11, 60, 93, 0.05);
+  transition: all 0.4s ease;
+  position: relative;
+}
+
+.dark .nh-card {
+  background: #111827;
+  border-color: rgba(255, 255, 255, 0.05);
+}
+
+.nh-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.nh-card-media {
+  height: 220px;
+  position: relative;
+  overflow: hidden;
+}
+
+.nh-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+
+.nh-card:hover .nh-card-img {
+  transform: scale(1.1);
+}
+
+.nh-card-badge {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: rgba(11, 60, 93, 0.9);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 8px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  backdrop-filter: blur(4px);
+  z-index: 2;
+}
+
+.nh-card-content {
+  padding: 24px;
+}
+
+.nh-card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--nh-navy);
+  margin-bottom: 12px;
+}
+
+.dark .nh-card-title {
+  color: #f1f5f9;
+}
+
+.nh-card-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--nh-slate);
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+
+.dark .nh-card-info {
+  color: #94a3b8;
+}
+
+.nh-dist-tag {
+  background: #f1f5f9;
+  color: var(--nh-navy);
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.dark .nh-dist-tag {
+  background: #1e293b;
+  color: #e2e8f0;
+}
+
+.nh-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(0,0,0,0.05);
+  padding-top: 15px;
+}
+
+.dark .nh-card-footer {
+  border-color: rgba(255,255,255,0.05);
+}
+
+.nh-rating {
+  display: flex;
+  gap: 2px;
+  color: #fbbf24;
+}
+
+.nh-cta {
+  color: var(--nh-gold);
+  font-weight: 700;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Mobile Tweaks */
+@media (max-width: 768px) {
+  .nh-hero {
+    height: 350px;
+  }
+  
+  .nh-hero h1 {
+    font-size: 2rem !important;
+  }
+  
+  .nh-grid {
+    grid-template-columns: 1fr;
+    padding: 15px;
+  }
+}

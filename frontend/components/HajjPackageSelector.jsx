@@ -232,7 +232,7 @@ export default function HajjPackageSelector() {
                 {/* Animated Background Glow */}
                 <div className="absolute -inset-[2px] rounded-[32px] bg-gradient-to-b from-[#D4AF37]/20 to-transparent opacity-0 group-hover:opacity-100 blur-[8px] transition-opacity duration-700"></div>
 
-                <div className="relative h-full flex flex-col items-center text-center bg-white :bg-[#0A0F1C] border border-slate-100 dark:border-[#1E293B] rounded-[32px] p-10 shadow-sm group-hover:shadow-[0_20px_40px_rgba(212,175,55,0.1)] transition-all duration-500 overflow-hidden">
+                <div className="relative h-full flex flex-col items-center text-center bg-white dark:bg-[#0A0F1C] border border-slate-100 dark:border-[#1E293B] rounded-[32px] p-10 shadow-sm group-hover:shadow-[0_20px_40px_rgba(212,175,55,0.1)] transition-all duration-500 overflow-hidden">
                   <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#D4AF37]/5 to-transparent rounded-full -translate-y-16 translate-x-16 group-hover:scale-150 transition-transform duration-1000"></div>
 
                   <div className="relative w-16 h-16 bg-[#D4AF37]/10 dark:bg-[#D4AF37]/5 rounded-[22px] flex items-center justify-center mb-8 border border-[#D4AF37]/20 transition-all duration-500 group-hover:bg-[#D4AF37] group-hover:rotate-[360deg] group-hover:shadow-[0_0_20px_rgba(212,175,55,0.4)]">
