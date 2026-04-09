@@ -24,15 +24,6 @@ export default function PilgrimageHome({ packages = [], flights = [] }) {
   const tabs = ["Super Saver", "Affordable", "Deluxe"];
   const heroBanners = [
     {
-      src: "/banner.png",
-      showText: false,
-      showButtonOnly: true,
-      badge: "FLY INTERNATIONAL tours & Travels",
-      ctaHref: "/packages",
-      imageClassName: "object-contain scale-[0.84] object-center md:scale-95",
-      overlayClassName: "bg-black/5",
-    },
-    {
       src: "https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?auto=format&fit=crop&q=80&w=2000",
       showText: true,
       title: "Where Faith Meets",
@@ -129,7 +120,7 @@ export default function PilgrimageHome({ packages = [], flights = [] }) {
                 box-shadow: 0 0 10px rgba(0, 56, 224, 0.97);
               }
               .hero-slider .swiper-pagination {
-                bottom: 30px !important;
+                bottom: 20px !important;
                 z-index: 50;
               }
             `}</style>
@@ -168,19 +159,19 @@ export default function PilgrimageHome({ packages = [], flights = [] }) {
                       >
                         {banner.showText && (
                           <>
-                            <span className="mb-6 inline-block rounded-full border border-white/10 bg-black/20 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.24em] text-[#D4AF37] shadow-2xl backdrop-blur-xl sm:px-6 sm:tracking-[0.3em]">
-                              {banner.badge || "Fly International Tours & Travels"}
+                            <span className="mb-4 inline-block rounded-full border border-white/10 bg-black/20 px-3 py-1.5 text-[9px] font-bold uppercase tracking-[0.2em] text-[#D4AF37] shadow-2xl backdrop-blur-xl sm:px-6 sm:tracking-[0.3em]">
+                              {banner.badge || "Fly International Tours"}
                             </span>
-                            <h1 className="serif-heading mb-4 text-3xl font-extrabold leading-tight tracking-tight text-white drop-shadow-2xl sm:text-4xl md:text-5xl lg:text-7xl">
+                            <h1 className="serif-heading mb-3 text-3xl font-extrabold leading-tight tracking-tight text-white drop-shadow-2xl">
                               {banner.title} <br className="hidden sm:block" /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#F3D67A] italic">{banner.highlight}</span>
                             </h1>
-                            <p className="mx-auto mb-10 max-w-2xl text-sm font-medium text-gray-200 drop-shadow-md sm:text-base md:text-lg">
+                            <p className="mx-auto mb-8 max-w-2xl text-xs font-medium text-gray-200 drop-shadow-md px-2">
                               {banner.subtitle}
                             </p>
                           </>
                         )}
 
-                        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-4">
                           <Link
                             href={banner.ctaHref || "/packages"}
                             className={banner.showButtonOnly
