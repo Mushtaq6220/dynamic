@@ -123,6 +123,13 @@ body {
   overflow-x: hidden;
 }
 
+img,
+video,
+canvas,
+svg {
+  max-width: 100%;
+}
+
 .site-body {
   isolation: isolate;
 }
@@ -3166,4 +3173,53 @@ p, .pf-text {
 
 [data-theme="dark"] .package-title-tagline {
   color: #f0c977;
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 15px;
+  }
+
+  .page-shell,
+  .section-shell {
+    width: min(100% - 24px, 1120px);
+  }
+
+  main {
+    width: 100%;
+    overflow-x: clip;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 9vw, 3rem);
+  }
+
+  h2 {
+    font-size: clamp(1.6rem, 7vw, 2.35rem);
+  }
+
+  .glass-panel,
+  .glass-panel-strong,
+  .panel,
+  .detail-hero,
+  .package-card,
+  .info-card,
+  .stat-card {
+    border-radius: 22px;
+  }
+
+  .ziyarat-card {
+    grid-template-columns: 1fr;
+    padding: 18px;
+  }
+
+  .ziyarat-slider-shell {
+    position: static;
+  }
+
+  .route-search-grid-search,
+  .route-search-grid-two,
+  .route-search-grid {
+    grid-template-columns: 1fr;
+  }
 }

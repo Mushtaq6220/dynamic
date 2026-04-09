@@ -19,9 +19,9 @@ export default function ServicePageClient({ service }) {
 
   return (
     <main className="min-h-screen bg-[var(--bg)] pt-32 pb-20">
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6">
         {/* Modern Quote-Centric Hero Section */}
-        <section className="relative rounded-[40px] overflow-hidden mb-16 min-h-[400px] flex items-center border border-[var(--border)] group">
+        <section className="group relative mb-12 flex min-h-[320px] items-center overflow-hidden rounded-[30px] border border-[var(--border)] sm:mb-16 sm:min-h-[400px] sm:rounded-[40px]">
           {/* Background with advanced overlay */}
           <div className="absolute inset-0 z-0">
             <img 
@@ -33,7 +33,7 @@ export default function ServicePageClient({ service }) {
             <div className="absolute inset-0 bg-black/20"></div>
           </div>
           
-          <div className="relative z-10 p-8 md:p-20 w-full">
+          <div className="relative z-10 w-full p-6 sm:p-8 md:p-20">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -44,7 +44,7 @@ export default function ServicePageClient({ service }) {
                 <span className="text-[var(--secondary)] text-sm font-bold uppercase tracking-[0.3em]">{service.eyebrow}</span>
               </div>
               
-              <h1 className="text-white text-2xl md:text-3xl font-light italic leading-snug max-w-3xl mb-12 font-serif opacity-90">
+              <h1 className="mb-8 max-w-3xl font-serif text-xl font-light italic leading-snug text-white opacity-90 sm:mb-12 sm:text-2xl md:text-3xl">
                 "{service.slug === "air-ticketing" 
                   ? "To travel is to live, and to fly is to see the world from a perspective only angels know." 
                   : service.slug === "train-ticket-booking"
@@ -55,7 +55,7 @@ export default function ServicePageClient({ service }) {
               </h1>
 
               <div className="flex flex-col md:flex-row md:items-end gap-2 md:gap-6">
-                <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tight">
+                <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl md:text-6xl">
                   {service.title}
                 </h2>
                 <div className="h-10 w-px bg-white/20 hidden md:block mb-2"></div>
@@ -70,16 +70,16 @@ export default function ServicePageClient({ service }) {
         {service.slug === "visa-stamping" ? <div className="mb-12"><VisaStampingBanner /></div> : null}
         {service.slug === "train-ticket-booking" ? <div className="mb-12"><TrainBookingBanner /></div> : null}
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-8">
           {/* Main Coverage */}
-          <div className="lg:col-span-2 glass-panel p-10 rounded-[32px]">
+          <div className="glass-panel rounded-[28px] p-6 sm:rounded-[32px] sm:p-8 lg:col-span-2 lg:p-10">
             <h2 className="text-2xl font-bold text-[var(--primary)] mb-8 flex items-center gap-3">
               <div className="w-10 h-10 rounded-xl bg-[var(--secondary)]/10 flex items-center justify-center">
                 <DocumentCheckIcon className="w-6 h-6 text-[var(--secondary)]" />
               </div>
               What this service covers
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">
               {service.highlights.map((point) => (
                 <div key={point} className="flex items-start gap-4 p-4 rounded-2xl bg-[var(--surface-strong)] border border-transparent hover:border-[var(--secondary)]/20 transition-all duration-300">
                   <div className="w-2 h-2 rounded-full bg-[var(--secondary)] mt-1.5 flex-shrink-0"></div>
@@ -90,7 +90,7 @@ export default function ServicePageClient({ service }) {
           </div>
 
           {/* Contact Panel */}
-          <div className="glass-panel p-10 rounded-[32px] flex flex-col justify-between">
+          <div className="glass-panel flex flex-col justify-between rounded-[28px] p-6 sm:rounded-[32px] sm:p-8 lg:p-10">
             <div>
               <h2 className="text-2xl font-bold text-[var(--primary)] mb-6 tracking-tight">Need help?</h2>
               <p className="text-[var(--text-muted)] leading-relaxed mb-8">

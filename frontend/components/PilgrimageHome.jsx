@@ -22,6 +22,49 @@ import "swiper/css/pagination";
 export default function PilgrimageHome({ packages = [], flights = [] }) {
   const [activeTab, setActiveTab] = useState("Deluxe");
   const tabs = ["Super Saver", "Affordable", "Deluxe"];
+  const heroBanners = [
+    {
+      src: "/banner.png",
+      showText: false,
+      showButtonOnly: true,
+      badge: "FLY INTERNATIONAL tours & Travels",
+      ctaHref: "/packages",
+      imageClassName: "object-contain scale-[0.84] object-center md:scale-95",
+      overlayClassName: "bg-black/5",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?auto=format&fit=crop&q=80&w=2000",
+      showText: true,
+      title: "Where Faith Meets",
+      highlight: "Journey",
+      subtitle: "Experience Hajj & Umrah with peace and care.",
+      ctaHref: "/packages",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1580418827493-f2b22c0a76cb?auto=format&fit=crop&q=80&w=2000",
+      showText: true,
+      title: "From Your City to the",
+      highlight: "Holy Land",
+      subtitle: "We take care of everything for you.",
+      ctaHref: "/packages",
+    },
+    {
+      src: "https://res.cloudinary.com/greenappletravel-ae/image/upload/v1766559767/greenapple/tours/main/umrah-package-makkah-madinah_1766559766.webp",
+      showText: true,
+      title: "Your Spiritual Journey,",
+      highlight: "Our Responsibility",
+      subtitle: "Excellence in every step.",
+      ctaHref: "/services",
+    },
+    {
+      src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbwRJnoQesLtWzT1aPpJpQAdqk0MjMekCyxQ&s",
+      showText: true,
+      title: "Seamless & Secure",
+      highlight: "Pilgrimage",
+      subtitle: "Premium packages with comfort and affordability.",
+      ctaHref: "/contact",
+    },
+  ];
   const serviceHighlights = [
     {
       ...getServicePage("air-ticketing"),
@@ -55,9 +98,9 @@ export default function PilgrimageHome({ packages = [], flights = [] }) {
   return (
     <main className="relative bg-transparent">
       {/* Cinematic Hero Section */}
-      <section className="relative w-full h-[50vh] min-h-[350px] md:h-[70vh] md:min-h-[500px] lg:h-[85vh] overflow-hidden">
+      <section className="relative w-full min-h-[340px] overflow-hidden md:min-h-[500px]">
         {/* Swiper Background Slider */}
-        <div className="absolute inset-0 w-full h-full z-0">
+        <div className="absolute inset-0 z-0 h-full w-full">
           <Swiper
             modules={[Autoplay, EffectFade, Pagination, Keyboard]}
             effect="fade"
@@ -90,49 +133,18 @@ export default function PilgrimageHome({ packages = [], flights = [] }) {
                 z-index: 50;
               }
             `}</style>
-            {[
-              {
-                src: "/banner.png",
-                showText: false,
-                showButtonOnly: true,
-                badge: "FLY INTERNATIONAL tours & Travels"
-              },
-              {
-                src: "https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?auto=format&fit=crop&q=80&w=2000",
-                showText: true,
-                title: "Where Faith Meets",
-                highlight: "Journey",
-                subtitle: "Experience Hajj & Umrah with peace and care."
-              },
-              {
-                src: "https://images.unsplash.com/photo-1580418827493-f2b22c0a76cb?auto=format&fit=crop&q=80&w=2000",
-                showText: true,
-                title: "From Your City to the",
-                highlight: "Holy Land",
-                subtitle: "We take care of everything for you."
-              },
-              {
-                src: "https://res.cloudinary.com/greenappletravel-ae/image/upload/v1766559767/greenapple/tours/main/umrah-package-makkah-madinah_1766559766.webp",
-                showText: true,
-                title: "Your Spiritual Journey,",
-                highlight: "Our Responsibility",
-                subtitle: "Excellence in every step."
-              },
-              {
-                src: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbwRJnoQesLtWzT1aPpJpQAdqk0MjMekCyxQ&s",
-                showText: true,
-                title: "Seamless & Secure",
-                highlight: "Pilgrimage",
-                subtitle: "Premium packages with comfort and affordability."
-              }
-            ].map((banner, i) => (
+            {heroBanners.map((banner, i) => (
               <SwiperSlide key={i}>
                 <div className="relative w-full h-full overflow-hidden">
-                  <div className={`absolute inset-0 z-10 pointer-events-none ${banner.showText ? 'bg-black/50' : 'bg-black/10'}`}></div>
-                  <img src={banner.src} alt={`Banner ${i}`} className="w-full h-full object-contain md:object-cover sm:object-[center_top] md:object-center bg-black" />
+                  <div className={`absolute inset-0 z-10 pointer-events-none ${banner.overlayClassName || (banner.showText ? "bg-black/50" : "bg-black/10")}`}></div>
+                  <img
+                    src={banner.src}
+                    alt={`Banner ${i + 1}`}
+                    className={`h-full w-full bg-black ${banner.imageClassName || "object-cover object-center"}`}
+                  />
 
                   {(banner.showText || banner.showButtonOnly) && (
-                    <div className={`absolute inset-0 z-20 h-full max-w-7xl mx-auto px-6 flex flex-col items-center pointer-events-none ${banner.showText ? 'justify-center text-center py-20' : 'justify-between text-center pt-16 md:pt-20 pb-24 md:pb-32'}`}>
+                    <div className={`absolute inset-0 z-20 mx-auto flex h-full max-w-7xl flex-col items-center px-4 pointer-events-none sm:px-6 ${banner.showText ? "justify-center py-16 text-center md:py-20" : "justify-between pt-20 pb-24 text-center md:pt-20 md:pb-32"}`}>
                       {/* Top Badge for first banner upside placement */}
                       {banner.showButtonOnly && banner.badge && (
                         <motion.div
@@ -141,7 +153,7 @@ export default function PilgrimageHome({ packages = [], flights = [] }) {
                           transition={{ duration: 1, ease: "easeOut" }}
                           className="pointer-events-auto"
                         >
-                          <span className="inline-block py-2 px-8 rounded-full bg-black/30 backdrop-blur-2xl border border-white/10 text-[#D4AF37] tracking-[0.4em] text-[11px] font-black uppercase shadow-[0_0_30px_rgba(0,0,0,0.5)]">
+                          <span className="inline-block rounded-full border border-white/10 bg-black/30 px-5 py-2 text-[10px] font-black uppercase tracking-[0.28em] text-[#D4AF37] shadow-[0_0_30px_rgba(0,0,0,0.5)] backdrop-blur-2xl sm:px-8 sm:text-[11px] sm:tracking-[0.4em]">
                             {banner.badge}
                           </span>
                         </motion.div>
@@ -156,13 +168,13 @@ export default function PilgrimageHome({ packages = [], flights = [] }) {
                       >
                         {banner.showText && (
                           <>
-                            <span className="inline-block py-2 px-6 mb-8 rounded-full bg-black/20 backdrop-blur-xl border border-white/10 text-[#D4AF37] tracking-[0.3em] text-[10px] font-bold uppercase shadow-2xl">
+                            <span className="mb-6 inline-block rounded-full border border-white/10 bg-black/20 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.24em] text-[#D4AF37] shadow-2xl backdrop-blur-xl sm:px-6 sm:tracking-[0.3em]">
                               {banner.badge || "Fly International Tours & Travels"}
                             </span>
-                            <h1 className="text-4xl md:text-5xl lg:text-7xl font-extrabold text-white mb-4 tracking-tight drop-shadow-2xl leading-tight serif-heading">
+                            <h1 className="serif-heading mb-4 text-3xl font-extrabold leading-tight tracking-tight text-white drop-shadow-2xl sm:text-4xl md:text-5xl lg:text-7xl">
                               {banner.title} <br className="hidden sm:block" /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#F3D67A] italic">{banner.highlight}</span>
                             </h1>
-                            <p className="text-base md:text-lg text-gray-200 font-medium max-w-2xl mx-auto mb-12 drop-shadow-md">
+                            <p className="mx-auto mb-10 max-w-2xl text-sm font-medium text-gray-200 drop-shadow-md sm:text-base md:text-lg">
                               {banner.subtitle}
                             </p>
                           </>
@@ -170,10 +182,10 @@ export default function PilgrimageHome({ packages = [], flights = [] }) {
 
                         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                           <Link
-                            href="#packages"
+                            href={banner.ctaHref || "/packages"}
                             className={banner.showButtonOnly
-                              ? "px-10 py-4 rounded-full bg-white/5 backdrop-blur-xl border border-white/20 text-white font-bold tracking-[0.3em] text-[10px] uppercase hover:bg-[#D4AF37] hover:border-[#D4AF37] hover:scale-110 hover:shadow-[0_0_50px_rgba(212,175,55,0.6)] transition-all duration-700 group overflow-hidden relative shadow-2xl"
-                              : "px-8 py-3 rounded-full bg-gradient-to-r from-[var(--primary)] to-[#B38F24] text-white font-bold tracking-widest text-sm shadow-[0_8px_30px_rgba(212,175,55,0.4)] hover:scale-105 hover:-translate-y-1 hover:shadow-[0_12px_45px_rgba(212,175,55,0.7)] transition-all duration-300"
+                              ? "relative overflow-hidden rounded-full border border-white/20 bg-white/5 px-8 py-4 text-[10px] font-bold uppercase tracking-[0.24em] text-white shadow-2xl transition-all duration-700 hover:scale-105 hover:border-[#D4AF37] hover:bg-[#D4AF37] hover:shadow-[0_0_50px_rgba(212,175,55,0.6)] backdrop-blur-xl sm:px-10 sm:tracking-[0.3em] group"
+                              : "rounded-full bg-gradient-to-r from-[var(--primary)] to-[#B38F24] px-8 py-3 text-sm font-bold tracking-widest text-white shadow-[0_8px_30px_rgba(212,175,55,0.4)] transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_12px_45px_rgba(212,175,55,0.7)]"
                             }
                           >
                             <span className="relative z-10">Explore More</span>
@@ -193,7 +205,7 @@ export default function PilgrimageHome({ packages = [], flights = [] }) {
       </section>
 
       {/* Introduction / About Section */}
-      <section className="py-27 px-9 max-w-7xl mx-auto bg-transparent relative z-10">
+      <section className="relative z-10 mx-auto max-w-7xl bg-transparent px-6 py-20 md:px-8 md:py-24">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left Text Content */}
           <motion.div
@@ -231,7 +243,7 @@ export default function PilgrimageHome({ packages = [], flights = [] }) {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="relative h-[450px] w-full rounded-[32px] overflow-hidden group border border-[var(--border)] shadow-[var(--shadow)] bg-[var(--surface)]"
+            className="relative h-[320px] w-full overflow-hidden rounded-[32px] border border-[var(--border)] bg-[var(--surface)] shadow-[var(--shadow)] group sm:h-[380px] lg:h-[450px]"
           >
             {/* Overlay */}
             <div className="absolute inset-0 bg-[#0A0F1C]/20 z-10 group-hover:bg-transparent transition-all duration-700"></div>

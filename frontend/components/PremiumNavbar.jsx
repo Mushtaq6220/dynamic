@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -10,7 +10,6 @@ import {
   ChevronDownIcon,
   SunIcon,
   MoonIcon,
-  Bars3Icon,
   XMarkIcon,
   MapPinIcon,
   StarIcon,
@@ -111,7 +110,7 @@ const menuData = [
   },
   {
     label: "More",
-    href: "#",
+    href: null,
     dropdown: [
       {
         title: "Flight Schedules",
@@ -142,7 +141,21 @@ export default function PremiumNavbar() {
   const [expandedMobileItems, setExpandedMobileItems] = useState([]);
 
   const toggleMobileItem = (idx) => {
-    setExpandedMobileItems(prev => prev.includes(idx) ? prev.filter(i => i !== idx) : [...prev, idx]);
+    setExpandedMobileItems((prev) => (
+      prev.includes(idx) ? prev.filter((i) => i !== idx) : [...prev, idx]
+    ));
+  };
+
+  const isItemActive = (item) => {
+    if (item.href && item.href !== "/" && pathname.startsWith(item.href)) {
+      return true;
+    }
+
+    if (item.href === pathname) {
+      return true;
+    }
+
+    return item.dropdown?.some((subItem) => pathname === subItem.href) || false;
   };
 
   // Handle Scroll effect
@@ -161,6 +174,23 @@ export default function PremiumNavbar() {
     setTheme(savedTheme);
     document.documentElement.dataset.theme = savedTheme;
   }, []);
+
+  useEffect(() => {
+    setMobileMenuOpen(false);
+    setActiveDropdown(null);
+  }, [pathname]);
+
+  useEffect(() => {
+    if (!mobileMenuOpen) {
+      document.body.style.overflow = "";
+      return;
+    }
+
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileMenuOpen]);
 
   const toggleTheme = () => {
     const newTheme = theme === "light" ? "dark" : "light";
@@ -195,12 +225,16 @@ export default function PremiumNavbar() {
               onMouseLeave={() => setActiveDropdown(null)}
             >
               {item.dropdown ? (
-                <button className={`nav-link-btn ${pathname.startsWith(item.href) ? "active" : ""}`}>
+                <button
+                  type="button"
+                  className={`nav-link-btn ${isItemActive(item) ? "active" : ""}`}
+                  aria-expanded={activeDropdown === idx}
+                >
                   {item.label}
                   <ChevronDownIcon className={`w-3.5 h-3.5 transition-transform duration-300 ${activeDropdown === idx ? "rotate-180" : ""}`} />
                 </button>
               ) : (
-                <Link href={item.href} className={`nav-link-btn ${pathname === item.href ? "active" : ""}`}>
+                <Link href={item.href} className={`nav-link-btn ${isItemActive(item) ? "active" : ""}`}>
                   {item.label}
                 </Link>
               )}
@@ -285,6 +319,31 @@ export default function PremiumNavbar() {
               exit={{ x: "100%" }}
               transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
             >
+            <div className="mobile-menu-header">
+              <Link href="/" className="mobile-menu-brand" onClick={() => setMobileMenuOpen(false)}>
+                <Image
+                  src="/fly-international-logo-latest.png"
+                  alt="Fly International Logo"
+                  width={180}
+                  height={52}
+                  className="mobile-menu-logo"
+                />
+              </Link>
+              <button
+                type="button"
+                className="mobile-close-btn"
+                onClick={() => setMobileMenuOpen(false)}
+                aria-label="Close menu"
+              >
+                <XMarkIcon className="w-5 h-5" />
+              </button>
+            </div>
+
+            <div className="mobile-menu-intro">
+              <p className="mobile-menu-eyebrow">Mobile navigation</p>
+              <p className="mobile-menu-title">Browse every page and service from one compact menu.</p>
+            </div>
+
             {menuData.map((item, idx) => (
               <motion.div
                 key={idx}
@@ -294,35 +353,52 @@ export default function PremiumNavbar() {
                 className="w-full"
               >
                 {item.dropdown ? (
-                  <div className="w-full">
-                    <button 
-                      onClick={() => toggleMobileItem(idx)}
-                      className="mobile-nav-link flex flex-row items-center justify-between"
-                    >
-                      {item.label}
-                      <ChevronDownIcon className={`w-5 h-5 transition-transform ${expandedMobileItems.includes(idx) ? 'rotate-180' : ''}`} />
-                    </button>
+                  <div className={`mobile-accordion ${expandedMobileItems.includes(idx) ? "expanded" : ""}`}>
+                    <div className="mobile-nav-row">
+                      {item.href ? (
+                        <Link
+                          href={item.href}
+                          className={`mobile-nav-link mobile-nav-link-main ${isItemActive(item) ? "active" : ""}`}
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          {item.label}
+                        </Link>
+                      ) : (
+                        <span className={`mobile-nav-link mobile-nav-link-main ${isItemActive(item) ? "active" : ""}`}>
+                          {item.label}
+                        </span>
+                      )}
+                      <button
+                        type="button"
+                        onClick={() => toggleMobileItem(idx)}
+                        className="mobile-nav-toggle"
+                        aria-expanded={expandedMobileItems.includes(idx)}
+                        aria-label={`Toggle ${item.label} menu`}
+                      >
+                        <ChevronDownIcon className={`w-5 h-5 transition-transform ${expandedMobileItems.includes(idx) ? "rotate-180" : ""}`} />
+                      </button>
+                    </div>
                     <AnimatePresence>
                       {expandedMobileItems.includes(idx) && (
                         <motion.div 
                           initial={{ height: 0, opacity: 0 }}
                           animate={{ height: "auto", opacity: 1 }}
                           exit={{ height: 0, opacity: 0 }}
-                          className="overflow-hidden pt-3 pb-1 flex flex-col gap-3 px-2"
+                          className="mobile-submenu"
                         >
                           {item.dropdown.map((subItem, sIdx) => (
                              <Link 
                                key={sIdx}
                                href={subItem.href}
-                               className="flex items-center gap-4 p-3 rounded-2xl bg-gray-50 dark:bg-gray-800/50 border border-gray-100 dark:border-gray-700 hover:bg-gray-100 transition-colors"
+                               className={`mobile-subitem ${pathname === subItem.href ? "active" : ""}`}
                                onClick={() => setMobileMenuOpen(false)}
                              >
-                                <div className="text-sky-600 dark:text-yellow-500 w-6 h-6 flex-shrink-0">
+                                <div className="mobile-subitem-icon">
                                    {subItem.icon}
                                 </div>
-                                <div className="flex flex-col text-left">
-                                   <span className="text-sm font-bold text-gray-900 dark:text-white">{subItem.title}</span>
-                                   <span className="text-[10px] text-gray-500 line-clamp-1">{subItem.desc}</span>
+                                <div className="mobile-subitem-content">
+                                   <span className="mobile-subitem-title">{subItem.title}</span>
+                                   <span className="mobile-subitem-desc">{subItem.desc}</span>
                                 </div>
                              </Link>
                           ))}
@@ -333,7 +409,7 @@ export default function PremiumNavbar() {
                 ) : (
                   <Link 
                     href={item.href} 
-                    className="mobile-nav-link text-center"
+                    className={`mobile-nav-link ${isItemActive(item) ? "active" : ""}`}
                     onClick={() => setMobileMenuOpen(false)}
                   >
                     {item.label}
