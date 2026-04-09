@@ -234,14 +234,14 @@ export default function PilgrimageHome({ packages = [], flights = [] }) {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="relative h-[320px] w-full overflow-hidden rounded-[32px] border border-[var(--border)] bg-[var(--surface)] shadow-[var(--shadow)] group sm:h-[380px] lg:h-[450px]"
+            className="relative aspect-[4/3] w-full overflow-hidden rounded-[24px] border border-[var(--border)] bg-[#0A0F1C] shadow-[var(--shadow)] group"
           >
             {/* Overlay */}
             <div className="absolute inset-0 bg-[#0A0F1C]/20 z-10 group-hover:bg-transparent transition-all duration-700"></div>
             <img
               src="/global-travel-connections.png"
               alt="Global Journey Flight"
-              className="w-full h-full object-cover transition-transform duration-[10s] group-hover:scale-110"
+              className="w-full h-full object-contain scale-[0.95] transition-transform duration-[10s] group-hover:scale-105"
             />
             {/* Glowing Abstract Corner */}
             <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-[#D4AF37] rounded-full blur-[80px] opacity-40 z-20"></div>

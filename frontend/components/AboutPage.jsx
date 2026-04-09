@@ -126,7 +126,7 @@ export default function AboutPage() {
           initial={{ opacity: 0, scale: 0.98 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          className="flex flex-wrap justify-between items-center gap-8 py-8 px-10 rounded-2xl bg-[var(--surface)] border border-[var(--border)] dark:border-[#1E293B] shadow-sm dark:shadow-[0_4px_20px_rgba(0,0,0,0.4)]"
+          className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 py-8 px-5 sm:px-10 rounded-2xl bg-[var(--surface)] border border-[var(--border)] dark:border-[#1E293B] shadow-sm dark:shadow-[0_4px_20px_rgba(0,0,0,0.4)]"
         >
           {[
             { num: 5000, suffix: "+", label: "Clients Assisted" },
@@ -134,11 +134,11 @@ export default function AboutPage() {
             { num: 100, suffix: "%", label: "Multi-Service Expertise", isText: true },
             { num: 99, suffix: "%", label: "Customer Satisfaction" },
           ].map((stat, idx) => (
-            <div key={idx} className="flex flex-col gap-1 w-[40%] md:w-auto">
+            <div key={idx} className="flex flex-col gap-1 min-w-0">
               {stat.isText ? (
-                <span className="text-2xl font-extrabold text-[var(--heading)] font-serif">Comprehensive</span>
+                <span className="text-lg sm:text-2xl font-extrabold text-[var(--heading)] font-serif truncate" title="Comprehensive">Comprehensive</span>
               ) : (
-                <span className="text-2xl font-extrabold text-[var(--heading)] font-serif tracking-tight">
+                <span className="text-2xl sm:text-3xl lg:text-2xl font-extrabold text-[var(--heading)] font-serif tracking-tight">
                   <CompactCounter from={0} to={stat.num} suffix={stat.suffix} />
                 </span>
               )}
@@ -229,12 +229,15 @@ export default function AboutPage() {
         </div>
 
         <div className="relative">
-          {/* Timeline Connector */}
-          <div className="hidden lg:block absolute top-[24px] left-[10%] right-[10%] h-[1px] bg-[var(--border)] dark:bg-[#1E293B] z-0"></div>
+          {/* Vertical Timeline Connector (Mobile) */}
+          <div className="lg:hidden absolute top-[10%] bottom-[10%] left-[50%] w-[2px] bg-gradient-to-b from-transparent via-[var(--primary)]/30 dark:via-[#D4AF37]/30 to-transparent -translate-x-1/2 z-0"></div>
+          
+          {/* Timeline Connector (Desktop) */}
+          <div className="hidden lg:block absolute top-[56px] left-[10%] right-[10%] h-[2px] bg-[linear-gradient(90deg,transparent,rgba(11,60,93,0.3)_50%,transparent)] dark:bg-[linear-gradient(90deg,transparent,rgba(212,175,55,0.3)_50%,transparent)] z-0 pointer-events-none"></div>
           
           <motion.div 
             initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 relative z-10"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-6 relative z-10"
           >
             {[
               { num: "1", title: "Consultation", sub: "Understanding needs" },
@@ -243,12 +246,15 @@ export default function AboutPage() {
               { num: "4", title: "Preparation", sub: "Booking & briefing" },
               { num: "5", title: "Support", sub: "Ongoing trip care" },
             ].map((step, idx) => (
-              <motion.div key={idx} variants={fadeUp} className="flex flex-col lg:items-center text-left lg:text-center group">
-                <div className="w-12 h-12 rounded-full border border-[var(--border)] dark:border-[#D4AF37]/30 bg-[var(--surface)] text-[var(--heading)] flex items-center justify-center font-bold text-sm shadow-sm mb-4 group-hover:bg-[var(--primary)] dark:group-hover:bg-[#D4AF37] group-hover:text-white dark:group-hover:text-[#0A0F1C] transition-colors duration-300">
+              <motion.div key={idx} variants={fadeUp} className="flex flex-col items-center text-center group relative p-6 rounded-[32px] hover:bg-[var(--surface-strong)] dark:hover:bg-[#111827]/50 transition-all duration-500 overflow-hidden cursor-pointer">
+                {/* Advanced Mobile Glow Core */}
+                <div className="absolute inset-0 bg-gradient-to-b from-[var(--primary)]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
+                
+                <div className="w-16 h-16 rounded-full border border-[var(--border)] dark:border-[#D4AF37]/30 bg-[var(--surface)] text-[var(--heading)] flex items-center justify-center font-extrabold text-lg shadow-sm mb-5 group-hover:scale-110 group-hover:-translate-y-2 group-hover:bg-[var(--primary)] dark:group-hover:bg-[#D4AF37] group-hover:text-white dark:group-hover:text-[#0A0F1C] group-hover:shadow-[0_10px_30px_rgba(11,60,93,0.3)] dark:group-hover:shadow-[0_10px_30px_rgba(212,175,55,0.4)] transition-all duration-500 relative z-10 duration-700">
                   {step.num}
                 </div>
-                <h4 className="font-bold text-[var(--heading)] mb-1">{step.title}</h4>
-                <p className="text-xs text-[var(--text-muted)]">{step.sub}</p>
+                <h4 className="font-bold text-xl text-[var(--heading)] mb-2 relative z-10 group-hover:text-[var(--primary)] dark:group-hover:text-[#D4AF37] transition-colors duration-300">{step.title}</h4>
+                <p className="text-sm text-[var(--text-muted)] relative z-10 font-medium">{step.sub}</p>
               </motion.div>
             ))}
           </motion.div>

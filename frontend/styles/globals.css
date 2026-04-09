@@ -189,6 +189,13 @@ svg {
       rgba(0, 0, 0, 0.95) 100%);
 }
 
+@media (max-width: 768px) {
+  .anime-plane-stage {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+}
+
 .anime-home-orb {
   position: absolute;
   border-radius: 999px;
