@@ -51,15 +51,15 @@ const hotelData = {
       distance: "400m",
       location: "Umm Al Qura Street",
       rating: 5,
-      image: "https://images.unsplash.com/photo-1571011234479-052e00829871?q=80&w=2070&auto=format&fit=crop",
+      image: "https://lh3.googleusercontent.com/p/AF1QipOJVRZDgTaOLZ5R3B6jnMUwbd5Dig3tnJgqFFuH=w243-h174-n-k-no-nu",
       tag: "Spacious Stays"
     },
     {
       name: "Swissôtel Makkah",
-      distance: "050m",
+      distance: "550m",
       location: "Clock Tower Plaza",
       rating: 5,
-      image: "https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?q=80&w=2070&auto=format&fit=crop",
+      image: "https://images.trvl-media.com/lodging/6000000/5300000/5293800/5293767/1e3cce32.jpg?impolicy=resizecrop&rw=575&rh=575&ra=fill",
       tag: "Swiss Quality"
     }
   ],
@@ -199,12 +199,19 @@ export default function NearbyHotelsPage() {
               >
                 <div className="nh-card-media">
                   <span className="nh-card-badge">{hotel.tag}</span>
-                  <Image
-                    src={hotel.image}
-                    alt={hotel.name}
-                    fill
-                    className="nh-card-img"
-                  />
+                  {hotel.image && hotel.image.trim() !== "" && (
+                    <Image
+                      src={hotel.image}
+                      alt={hotel.name}
+                      fill
+                      className="nh-card-img"
+                    />
+                  )}
+                  {(!hotel.image || hotel.image.trim() === "") && (
+                    <div className="w-full h-full bg-slate-200 flex items-center justify-center">
+                       <BuildingOfficeIcon className="w-12 h-12 text-slate-400" />
+                    </div>
+                  )}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
                     <button className="text-white font-bold flex items-center gap-2 text-sm uppercase tracking-wider">
                       View Details <ArrowRightIcon className="w-4 h-4" />

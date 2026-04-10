@@ -17,7 +17,7 @@ import {
 } from "@heroicons/react/24/outline";
 
 export default function AdminLayout({ children, activeTab, setActiveTab, onLogout }) {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const menuItems = [
     { id: "dashboard", label: "Dashboard", icon: ChartBarIcon, color: "from-blue-500 to-indigo-600" },
@@ -27,23 +27,40 @@ export default function AdminLayout({ children, activeTab, setActiveTab, onLogou
     { id: "flights", label: "Flight Schedules", icon: PaperAirplaneIcon, color: "from-sky-500 to-blue-600" },
   ];
 
+  const handleTabClick = (tabId) => {
+    setActiveTab(tabId);
+    if (window.innerWidth < 768) {
+      setIsSidebarOpen(false);
+    }
+  };
+
   return (
-    <div className="min-h-screen !bg-white flex flex-col md:flex-row font-sans">
+    <div className="min-h-screen !bg-white flex flex-col md:flex-row font-sans overflow-hidden">
       
       {/* MOBILE HEADER */}
-      <header className="md:hidden bg-white/95 backdrop-blur-md p-4 flex justify-between items-center shadow-lg z-50 border-b border-gray-100">
+      <header className="md:hidden bg-white/95 backdrop-blur-md p-4 flex justify-between items-center shadow-lg z-[60] border-b border-gray-100">
         <div className="flex items-center gap-2">
-           <div className="w-8 h-8 bg-black rounded-lg"></div>
+           <div className="w-8 h-8 bg-black rounded-lg flex items-center justify-center">
+              <span className="text-white font-black text-xs italic">F</span>
+           </div>
            <span className="font-extrabold text-black uppercase tracking-tighter text-xs">FLY Admin</span>
         </div>
-        <button onClick={() => setIsSidebarOpen(!isSidebarOpen)} className="p-2 text-black">
+        <button onClick={() => setIsSidebarOpen(!isSidebarOpen)} className="p-2 text-black transition-transform active:scale-90">
           {isSidebarOpen ? <XMarkIcon className="w-6 h-6" /> : <Bars3Icon className="w-6 h-6" />}
         </button>
       </header>
 
+      {/* MOBILE BACKDROP */}
+      {isSidebarOpen && (
+        <div 
+          className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40 md:hidden animate-in fade-in duration-300"
+          onClick={() => setIsSidebarOpen(false)}
+        ></div>
+      )}
+
       {/* SIDEBAR */}
       <aside className={`
-        fixed inset-y-0 left-0 z-40 w-72 !bg-white border-r border-gray-200/60 p-8 flex flex-col transition-transform duration-300 shadow-2xl md:shadow-none
+        fixed inset-y-0 left-0 z-50 w-72 !bg-white border-r border-gray-200/60 p-8 flex flex-col transition-transform duration-300 cubic-bezier(0.4, 0, 0.2, 1) shadow-2xl md:shadow-none
         ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}
         md:relative md:translate-x-0
       `}>
@@ -61,11 +78,11 @@ export default function AdminLayout({ children, activeTab, setActiveTab, onLogou
           {menuItems.map((item) => (
             <button
               key={item.id}
-              onClick={() => setActiveTab(item.id)}
+              onClick={() => handleTabClick(item.id)}
               className={`
                 w-full flex items-center gap-4 px-6 py-4 rounded-3xl font-black text-[11px] uppercase tracking-widest transition-all duration-300
                 ${activeTab === item.id 
-                  ? 'bg-gray-50 text-black shadow-inner translate-x-1' 
+                  ? 'bg-gray-100 text-black shadow-inner translate-x-1' 
                   : 'text-gray-400 hover:text-black hover:bg-gray-50/50'}
               `}
             >
